@@ -3,6 +3,7 @@ import Container from "./Container";
 import headerLogo from "../assets/winpbu-logo.png";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import SliderHeader from "./SliderHeader";
 
 const Header = () => {
   return (
@@ -18,6 +19,11 @@ const Header = () => {
           <Navbar />
         </div>
       </Container>
+      <div className="bg-neutral-900">
+        <Container className="my-6 px-7  ">
+          <SliderHeader />
+        </Container>
+      </div>
     </div>
   );
 };
