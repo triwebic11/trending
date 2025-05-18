@@ -5,7 +5,7 @@ const Velki = () => {
   return (
     <div>
       <Container className="text-center text-7xl text-white">
-        Velki page{" "}
+        <div>Velki Page</div>
       </Container>
     </div>
   );
