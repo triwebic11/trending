@@ -2,6 +2,7 @@ import React from "react";
 import Container from "./Container";
 import headerBanner from "../assets/winpbu-logo.png";
 import { Link } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
   const menuItems = [
@@ -12,21 +13,34 @@ const Header = () => {
     { title: "এজেন্ট লিস্ট  ", path: "/" },
     { title: "কাস্টমার সার্ভিস ", path: "/" },
   ];
+
   return (
     <div>
       <Container>
-        <div className="flex justify-center items-center py-12">
-          <Link to="/">
-            <img src={headerBanner} alt="Header-Banner" className="w-[300px]" />
-          </Link>
+        <div>
+          <div className="text-orange-300 pt-4">Trending</div>
+          <div className="flex justify-center items-center py-12">
+            <Link to="/">
+              <img
+                src={headerBanner}
+                alt="Header-Banner"
+                className="w-[300px]"
+              />
+            </Link>
+          </div>
+          <div className="flex bg-black text-white py-6 px-5">
+            <ul className="hidden md:inline-flex gap-8 pl-5">
+              {menuItems.map((item, index) => (
+                <li key={index} className="hover:underline text-lg">
+                  <Link to={item.path}>{item.title}</Link>
+                </li>
+              ))}
+            </ul>
+            <div className="md:hidden cursor-pointer text-3xl text-right">
+              <FiMenu />
+            </div>
+          </div>
         </div>
-        <ul className="flex gap-5 bg-black text-white py-6 px-5">
-          {menuItems.map((item, index) => (
-            <li key={index} className="hover:underline text-lg">
-              <Link to={item.path}>{item.title}</Link>
-            </li>
-          ))}
-        </ul>
       </Container>
     </div>
   );

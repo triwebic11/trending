@@ -6,6 +6,7 @@ import Header from "./components/Header.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Footer from "./components/Footer.jsx";
 
+
 const Layout = () => {
   return (
     <div>
