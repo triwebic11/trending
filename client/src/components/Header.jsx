@@ -14,11 +14,13 @@ const Header = () => {
   ];
   return (
     <div>
-      <Container className="bg-black text-white py-4 px-5">
-        <div>
-          <img src={headerBanner} alt="Header-Banner" />
+      <Container>
+        <div className="flex justify-center items-center py-12">
+          <Link to="/">
+            <img src={headerBanner} alt="Header-Banner" className="w-[300px]" />
+          </Link>
         </div>
-        <ul className="flex gap-4 ">
+        <ul className="flex gap-5 bg-black text-white py-6 px-5">
           {menuItems.map((item, index) => (
             <li key={index} className="hover:underline text-lg">
               <Link to={item.path}>{item.title}</Link>
