@@ -5,7 +5,7 @@ const MasterAgentList = () => {
   return (
     <div>
       <Container className="text-center text-white text-8xl">
-        MasterAgent List page
+        MasterAgent List page******************
       </Container>
     </div>
   );
