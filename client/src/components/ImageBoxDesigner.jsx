@@ -6,7 +6,7 @@ const ImageBoxDesigner = ({ imgSrc, alt }) => {
       <img
         src={imgSrc}
         alt={alt}
-        className="w-full rounded-lg shadow-lg hover:scale-120 hover:-rotate-6 duration-300"
+        className=" w-full h-[430px] rounded-lg shadow-lg hover:scale-120 hover:-rotate-6 duration-300"
       />
     </div>
   );

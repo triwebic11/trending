@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import customer from "../assets/customer.jpeg";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import ImageBoxDesigner from "../components/ImageBoxDesigner";
+
 
 const CustomerServics = () => {
   const data = [
