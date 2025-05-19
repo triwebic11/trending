@@ -15,6 +15,7 @@ import SubAdminList from "./pages/agentlist/SubAdminList.jsx";
 import SuperAgentList from "./pages/agentlist/SuperAgentList.jsx";
 import SuchAgent from "./pages/SuchAgent.jsx";
 import Velki from "./pages/site/Velki.jsx";
+import Loading from "./pages/Loading.jsx";
 
 const Layout = () => {
   return (
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       { path: "/masteragentlist", element: <MasterAgentList /> },
       { path: "/customerservics", element: <CustomerServics /> },
       { path: "/questionanswer", element: <QuestionAnswer /> },
-
+      { path: "/loading", element: <Loading /> },
       { path: "/velki", element: <Velki /> },
       { path: "/suchagent", element: <SuchAgent /> },
       { path: "*", element: <PageNotFound /> },

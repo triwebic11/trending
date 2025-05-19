@@ -1,11 +1,13 @@
 import rule from "../assets/rules-and-regulations.png";
 import money from "../assets/MONEY-TRANSFER.png";
 import register from "../assets/REGISTER.png";
+import Container from "../components/Container";
+import ImageBoxDesigner from "../components/ImageBoxDesigner";
 
 const QuestionAnswer = () => {
   return (
     <div className=" text-white  px-6 py-10 font-sans">
-      <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 ">
+      <Container className=" flex flex-col md:flex-row gap-8 ">
         <div className="">
           {/* Category Title */}
           <h2 className="text-3xl font-bold mb-4">
@@ -25,13 +27,14 @@ const QuestionAnswer = () => {
               </div>
 
               {/* Image */}
-              <div className="mb-6">
+              {/* <div className="w-full h-auto mb-6 overflow-hidden cursor-pointer">
                 <img
                   src={rule}
                   alt="Rules and Regulations"
-                  className="w-full rounded-lg shadow-lg hover:translate-3"
+                  className="w-full rounded-lg shadow-lg hover:scale-120 hover:-rotate-6 duration-300"
                 />
-              </div>
+              </div> */}
+              <ImageBoxDesigner imgSrc={rule} alt="Rules and Regulation" />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
                 <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
@@ -58,13 +61,7 @@ const QuestionAnswer = () => {
               </div>
 
               {/* Image */}
-              <div className="mb-6">
-                <img
-                  src={money}
-                  alt="money"
-                  className="w-full rounded-lg shadow-lg hover:translate-3"
-                />
-              </div>
+              <ImageBoxDesigner imgSrc={money} alt="Money Transfer" />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10  text-center">
                 বিকাশ / নগদ / রকেট বা অন্যান্য মোবাইল ব্যাংকিংএর সময় সীমাঃ-
@@ -84,13 +81,7 @@ const QuestionAnswer = () => {
               </div>
 
               {/* Image */}
-              <div className="mb-6">
-                <img
-                  src={register}
-                  alt="register"
-                  className="w-full rounded-lg shadow-lg hover:translate-3"
-                />
-              </div>
+              <ImageBoxDesigner imgSrc={register} alt="Register" />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
                 <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
@@ -153,7 +144,7 @@ const QuestionAnswer = () => {
             <p className="text-sm  mt-2">No comments to show.</p>
           </aside>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
