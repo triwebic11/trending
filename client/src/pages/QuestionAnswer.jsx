@@ -1,7 +1,6 @@
-
-import rule from "../assets/rules-and-regulations.png"
-import money from '../assets/MONEY-TRANSFER.png'
-import register from '../assets/REGISTER.png'
+import rule from "../assets/rules-and-regulations.png";
+import money from "../assets/MONEY-TRANSFER.png";
+import register from "../assets/REGISTER.png";
 
 const QuestionAnswer = () => {
   return (
@@ -22,9 +21,7 @@ const QuestionAnswer = () => {
                 <h1 className="text-3xl font-bold mt-3 hover:text-[#ff7c7c] duration-200">
                   একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
                 </h1>
-                <p className="text-sm  mt-1">
-                  👤 By | January 26, 2025
-                </p>
+                <p className="text-sm  mt-1">👤 By | January 26, 2025</p>
               </div>
 
               {/* Image */}
@@ -37,10 +34,13 @@ const QuestionAnswer = () => {
               </div>
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
-                <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম
-                এই শর্ত গুলো না পড়ে আপনারা কখনোই একাউন্ট খুলবেন না! সকল সুপার এবং মাস্টার
-                এজেন্ট এবং সকল ইউজার এর নিয়মের এই নিয়মাবলী।{' '}
-                <a href="#" className=" underline hover:text-[#ff7c7c] duration-200">
+                <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
+                শর্ত গুলো না পড়ে আপনারা কখনোই একাউন্ট খুলবেন না! সকল সুপার এবং
+                মাস্টার এজেন্ট এবং সকল ইউজার এর নিয়মের এই নিয়মাবলী।{" "}
+                <a
+                  href="#"
+                  className=" underline hover:text-[#ff7c7c] duration-200"
+                >
                   [Read More...]
                 </a>
               </p>
@@ -54,9 +54,7 @@ const QuestionAnswer = () => {
                 <h1 className="text-3xl font-bold mt-3 hover:text-[#ff7c7c] duration-200">
                   একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
                 </h1>
-                <p className="text-sm mt-1">
-                  👤 By | January 26, 2025
-                </p>
+                <p className="text-sm mt-1">👤 By | January 26, 2025</p>
               </div>
 
               {/* Image */}
@@ -69,8 +67,8 @@ const QuestionAnswer = () => {
               </div>
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10  text-center">
-                বিকাশ / নগদ / রকেট বা অন্যান্য মোবাইল ব্যাংকিংএর সময় সীমাঃ- ব্যাংকে কিভাবে এ কিভাবে লেনদেন করবেন?
-
+                বিকাশ / নগদ / রকেট বা অন্যান্য মোবাইল ব্যাংকিংএর সময় সীমাঃ-
+                ব্যাংকে কিভাবে এ কিভাবে লেনদেন করবেন?
               </p>
             </div>
             <div className="mb-20">
@@ -82,9 +80,7 @@ const QuestionAnswer = () => {
                 <h1 className="text-3xl font-bold mt-3 hover:text-[#ff7c7c] duration-200">
                   একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
                 </h1>
-                <p className="text-sm  mt-1">
-                  👤 By | January 26, 2025
-                </p>
+                <p className="text-sm  mt-1">👤 By | January 26, 2025</p>
               </div>
 
               {/* Image */}
@@ -97,17 +93,18 @@ const QuestionAnswer = () => {
               </div>
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
-                <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম
-                এই শর্ত গুলো না পড়ে আপনারা কখনোই একাউন্ট খুলবেন না! সকল সুপার এবং মাস্টার
-                এজেন্ট এবং সকল ইউজার এর নিয়মের এই নিয়মাবলী।{' '}
-                <a href="#" className=" underline hover:text-[#ff7c7c] duration-200">
+                <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
+                শর্ত গুলো না পড়ে আপনারা কখনোই একাউন্ট খুলবেন না! সকল সুপার এবং
+                মাস্টার এজেন্ট এবং সকল ইউজার এর নিয়মের এই নিয়মাবলী।{" "}
+                <a
+                  href="#"
+                  className=" underline hover:text-[#ff7c7c] duration-200"
+                >
                   [Read More...]
                 </a>
               </p>
             </div>
           </div>
-
-
         </div>
 
         <div className="">
@@ -128,11 +125,26 @@ const QuestionAnswer = () => {
               Recent Posts
             </h3>
             <ul className="space-y-4 text-sm ">
-              <li className="border-b-1 border-dotted border-gray-600 pb-1"> এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন</li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1"> কিভাবে আমি ভেরিফাই তে এজেন্ট হতে পারি?</li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1"> ভেরিফাই সাইট</li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1"> একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?</li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1"> WINPBU তে কিভাবে নেনদেন করবেন?</li>
+              <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                {" "}
+                এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন
+              </li>
+              <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                {" "}
+                কিভাবে আমি ভেরিফাই তে এজেন্ট হতে পারি?
+              </li>
+              <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                {" "}
+                ভেরিফাই সাইট
+              </li>
+              <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                {" "}
+                একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
+              </li>
+              <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                {" "}
+                WINPBU তে কিভাবে নেনদেন করবেন?
+              </li>
             </ul>
 
             <h3 className="text-2xl font-semibold mt-6 border-b-2 border-dotted border-gray-600 pb-1">
@@ -141,12 +153,9 @@ const QuestionAnswer = () => {
             <p className="text-sm  mt-2">No comments to show.</p>
           </aside>
         </div>
-
-
       </div>
     </div>
   );
 };
 
 export default QuestionAnswer;
-

@@ -8,7 +8,7 @@ import Footer from "./components/Footer.jsx";
 import CustomerServics from "./pages/CustomerServics.jsx";
 import QuestionAnswer from "./pages/QuestionAnswer.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
-import ProxyLink from "./pages/site/ProxyLink.jsx";
+
 import MasterAgentList from "./pages/agentlist/MasterAgentList.jsx";
 import SiteAdminList from "./pages/agentlist/SiteAdminList.jsx";
 import SubAdminList from "./pages/agentlist/SubAdminList.jsx";
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       { path: "/masteragentlist", element: <MasterAgentList /> },
       { path: "/customerservics", element: <CustomerServics /> },
       { path: "/questionanswer", element: <QuestionAnswer /> },
-      { path: "/proxylink", element: <ProxyLink /> },
+
       { path: "/velki", element: <Velki /> },
       { path: "/suchagent", element: <SuchAgent /> },
       { path: "*", element: <PageNotFound /> },

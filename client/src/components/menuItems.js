@@ -4,7 +4,7 @@ export const menuItems = [
   {
     title: "সাইট ",
     submenu: [
-      { title: "প্রক্সী লিঙ্কঃ", path: "/proxylink" },
+      { title: "প্রক্সী লিঙ্কঃ", path: "https://www.proxy9wkts.com/" },
       { title: "ভেল্কি", path: "/velki" },
     ],
   },
