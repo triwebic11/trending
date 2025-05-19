@@ -39,7 +39,7 @@ const SubAdminList = () => {
                       <img
                         src={subadminimage}
                         alt="Rules and Regulations"
-                        className="w-full rounded-lg shadow-lg hover:translate-3"
+                        className="w-full rounded-lg shadow-lg "
                       />
                     </div>
                     <h2 className="text-5xl font-bold mb-4">
