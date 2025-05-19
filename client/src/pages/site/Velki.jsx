@@ -1,8 +1,8 @@
 import React from "react";
 import Container from "../../components/Container";
-import agent from "../../assets/agent.png"
-import velki from '../../assets/velki-live-site.png'
-
+import agent from "../../assets/agent.png";
+import velki from "../../assets/velki-live-site.png";
+import ImageBoxDesigner from "../../components/ImageBoxDesigner";
 const Velki = () => {
   return (
     <div>
@@ -23,23 +23,20 @@ const Velki = () => {
                   <h1 className="text-3xl font-bold mt-3 hover:text-[#ff7c7c] duration-200">
                     কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?
                   </h1>
-                  <p className="text-sm  mt-1">
-                    👤 By | January 26, 2025
-                  </p>
+                  <p className="text-sm  mt-1">👤 By | January 26, 2025</p>
                 </div>
 
                 {/* Image */}
-                <div className="mb-6">
-                  <img
-                    src={agent}
-                    alt="agent"
-                    className="w-full rounded-lg shadow-lg hover:translate-3"
-                  />
-                </div>
+                <ImageBoxDesigner imgSrc={agent} alt="Agent" />
                 {/* Main Content */}
                 <p className="text-lg leading-relaxed mb-10 text-center">
-                  লোকাল মাস্টার এজেন্ট হবার সিস্টেম: এজেন্ট হবার জন্য আমাদের সুপার এজেন্ট দের সাথে যোগাযোগ করতে হবে। সুপার এজেন্ট লিস্ট দেখতে এই লিঙ্ক এ ক্লিক করুন।{' '}
-                  <a href="#" className=" underline hover:text-[#ff7c7c] duration-200">
+                  লোকাল মাস্টার এজেন্ট হবার সিস্টেম: এজেন্ট হবার জন্য আমাদের
+                  সুপার এজেন্ট দের সাথে যোগাযোগ করতে হবে। সুপার এজেন্ট লিস্ট
+                  দেখতে এই লিঙ্ক এ ক্লিক করুন।{" "}
+                  <a
+                    href="#"
+                    className=" underline hover:text-[#ff7c7c] duration-200"
+                  >
                     [Read More...]
                   </a>
                 </p>
@@ -53,30 +50,25 @@ const Velki = () => {
                   <h1 className="text-3xl font-bold mt-3 hover:text-[#ff7c7c] duration-200">
                     ভেল্কি সাইট
                   </h1>
-                  <p className="text-sm  mt-1">
-                    👤 By | January 26, 2025
-                  </p>
+                  <p className="text-sm  mt-1">👤 By | January 26, 2025</p>
                 </div>
 
                 {/* Image */}
-                <div className="mb-6">
-                  <img
-                    src={velki}
-                    alt="velki"
-                    className="w-full rounded-lg shadow-lg hover:translate-3"
-                  />
-                </div>
+                <ImageBoxDesigner imgSrc={velki} alt="Velki Site" />
                 {/* Main Content */}
                 <p className="text-lg leading-relaxed mb-10 text-center">
-                  ভেল্কি আমাদের জনপ্রিয় গেমিং সাইট – কিন্তু দুর্ভাগ্য বসত কিছু অসৎ এবং ধান্দাবাজ ব্যক্তি আমাদের সাইটের নকল করে অনেক গুলো সাইট তইরী করেছে। তাই আপনাদের{' '}
-                  <a href="#" className=" underline hover:text-[#ff7c7c] duration-200">
+                  ভেল্কি আমাদের জনপ্রিয় গেমিং সাইট – কিন্তু দুর্ভাগ্য বসত কিছু
+                  অসৎ এবং ধান্দাবাজ ব্যক্তি আমাদের সাইটের নকল করে অনেক গুলো সাইট
+                  তইরী করেছে। তাই আপনাদের{" "}
+                  <a
+                    href="#"
+                    className=" underline hover:text-[#ff7c7c] duration-200"
+                  >
                     [Read More...]
                   </a>
                 </p>
               </div>
             </div>
-
-
           </div>
           <div class="divide-y-3 divide-dashed divide-white"></div>
           <div className="">
@@ -97,11 +89,26 @@ const Velki = () => {
                 Recent Posts
               </h3>
               <ul className="space-y-4 text-sm ">
-                <li className="border-b-1 border-dotted border-gray-600 pb-1"> এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন</li>
-                <li className="border-b-1 border-dotted border-gray-600 pb-1"> কিভাবে আমি ভেরিফাই তে এজেন্ট হতে পারি?</li>
-                <li className="border-b-1 border-dotted border-gray-600 pb-1"> ভেরিফাই সাইট</li>
-                <li className="border-b-1 border-dotted border-gray-600 pb-1"> একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?</li>
-                <li className="border-b-1 border-dotted border-gray-600 pb-1"> WINPBU তে কিভাবে নেনদেন করবেন?</li>
+                <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                  {" "}
+                  এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন
+                </li>
+                <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                  {" "}
+                  কিভাবে আমি ভেরিফাই তে এজেন্ট হতে পারি?
+                </li>
+                <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                  {" "}
+                  ভেরিফাই সাইট
+                </li>
+                <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                  {" "}
+                  একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
+                </li>
+                <li className="border-b-1 border-dotted border-gray-600 pb-1">
+                  {" "}
+                  WINPBU তে কিভাবে নেনদেন করবেন?
+                </li>
               </ul>
 
               <h3 className="text-2xl font-semibold mt-6 border-b-2 border-dotted border-gray-600 pb-1">
@@ -110,8 +117,6 @@ const Velki = () => {
               <p className="text-sm  mt-2">No comments to show.</p>
             </aside>
           </div>
-
-
         </div>
       </Container>
     </div>
