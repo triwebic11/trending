@@ -23,19 +23,60 @@ function SliderHeader() {
       <div className="slider-container text-white w-5/6">
         <Slider {...settings}>
           <div>
-            <Link to="/">হোম পেইজ</Link>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
+            </Link>
           </div>
           <div>
-            <Link to="/">সাইট</Link>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              WINPBU তে কিভাবে লেনদেন করবেন?
+            </Link>
           </div>
           <div>
-            <Link to="/">এজেন্ট কে খজুন</Link>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              কিভাবে একাউন্ট খুলবেন?
+            </Link>
           </div>
           <div>
-            <Link to="/">এজেন্ট লিস্ট</Link>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              Site Admin List
+            </Link>
           </div>
           <div>
-            <Link to="/">কাস্টমার সার্ভিস</Link>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন
+            </Link>
+          </div>
+          <div>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?
+            </Link>
+          </div>
+          <div>
+            <Link
+              to="/"
+              className="hover:text-orange-700 duration-200 cursor-pointer"
+            >
+              ভেল্কি সাইট
+            </Link>
           </div>
         </Slider>
       </div>
