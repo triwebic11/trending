@@ -8,7 +8,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 const handleClick = (e) => {
   if (e.target.contains(ref.current)) {
-    setShow(false);
+    // setShow(false);
   }
 };
 
