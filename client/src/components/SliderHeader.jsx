@@ -5,14 +5,31 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function SliderHeader() {
   const settings = {
-    dots: true,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 3000,
     speed: 500,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 3,
     cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024, // lg এর নিচে
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768, // md এর নিচে
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -20,7 +37,7 @@ function SliderHeader() {
       <div className="w-1/6 bg-amber-400 text-center mr-8 ml-3 py-3">
         Breaking News
       </div>
-      <div className="slider-container text-white w-5/6">
+      <div className="slider-container text-white w-5/6 ">
         <Slider {...settings}>
           <div>
             <Link

@@ -15,6 +15,7 @@ const SecondSlid = () => {
     dots: true,
     infinite: true,
     speed: 400,
+    arrows: false,
     autoplay: true,
     autoplaySpeed: 5000,
     slidesToShow: 1,

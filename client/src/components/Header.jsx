@@ -18,12 +18,8 @@ const Header = () => {
           </div>
           <Navbar />
         </div>
+        <SliderHeader />
       </Container>
-      <div className="bg-neutral-900">
-        <Container className="my-6 px-7  ">
-          <SliderHeader />
-        </Container>
-      </div>
     </div>
   );
 };

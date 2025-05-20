@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { menuItems } from "./menuItems";
 import { FiMenu } from "react-icons/fi";
+import { IoCloseSharp } from "react-icons/io5";
+import { FaChevronDown } from "react-icons/fa";
 
 const handleClick = (e) => {
   if (e.target.contains(ref.current)) {
@@ -16,7 +18,7 @@ const Navbar = () => {
   const ref = useRef();
 
   return (
-    <div className="relative">
+    <div className="relative top-0">
       <div className="flex bg-black text-white py-6 px-5">
         <ul className="hidden md:flex gap-6 relative z-10">
           {menuItems?.map((item, index) => (
@@ -27,8 +29,11 @@ const Navbar = () => {
               onMouseLeave={() => setOpenIndex(null)}
             >
               {item.submenu ? (
-                <span className="cursor-pointer  hover:underline">
-                  {item.title}
+                <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group">
+                  <span>{item.title}</span>{" "}
+                  <span className=" group-hover:rotate-180 duration-300">
+                    <FaChevronDown />
+                  </span>
                 </span>
               ) : (
                 <Link to={item.path} className="hover:underline">
@@ -55,8 +60,8 @@ const Navbar = () => {
           ))}
         </ul>
         <div
-          onClick={() => setShow(true)}
-          className="md:hidden cursor-pointer text-3xl text-right float-right"
+          onClick={() => setShow(!show)}
+          className="md:hidden cursor-pointer text-3xl text-right absolute top-2 right-4"
         >
           <FiMenu />
         </div>
@@ -64,19 +69,28 @@ const Navbar = () => {
           <div
             ref={(node) => (ref.current = node)}
             onClick={handleClick}
-            className="absolute w-40 md:hidden flex flex-col gap-6 top-full bg-black px-3 z-40"
+            className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-center items-center bg-[#1D1B14] px-3 z-40"
           >
+            <div
+              onClick={() => setShow(!show)}
+              className="fixed top-8 right-5 hover:order-6 cursor-pointer text-3xl hover:text-orange-500"
+            >
+              <IoCloseSharp />
+            </div>
             <ul className=" gap-6 relative z-10">
               {menuItems?.map((item, index) => (
                 <li
                   key={index}
-                  className="relative "
+                  className="relative py-4 hover:text-orange-600"
                   onMouseEnter={() => setOpenIndex(index)}
                   onMouseLeave={() => setOpenIndex(null)}
                 >
                   {item.submenu ? (
-                    <span className="cursor-pointer  hover:underline">
-                      {item.title}
+                    <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group">
+                      <span>{item.title}</span>{" "}
+                      <span className=" group-hover:rotate-180 duration-300">
+                        <FaChevronDown />
+                      </span>
                     </span>
                   ) : (
                     <Link to={item.path} className="hover:underline py-3">
@@ -86,7 +100,7 @@ const Navbar = () => {
 
                   {/* Submenu */}
                   {item.submenu && openIndex === index && (
-                    <ul className="absolute left-full top-0 pt-2  w-56 bg-black z-0">
+                    <ul className="absolute right-full top-2 pt-2  w-56 bg-black z-0">
                       {item.submenu?.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link
