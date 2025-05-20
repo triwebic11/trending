@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FaWhatsappSquare } from "react-icons/fa";
 import AgentSearchForm from "../../components/AgentSearchForm";
 import AgentListTable from "../../components/AgentListTable";
+import ImageBoxDesigner from "../../components/ImageBoxDesigner";
+import HomeCardSections from "../../components/HomeCardSections";
 
 const MasterAgentList = () => {
   const data = [
@@ -32,15 +34,18 @@ const MasterAgentList = () => {
       <div className=" text-white  px-6 py-10 font-sans">
         <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 ">
           <div className="">
-         
+
             <div className="">
               <div className="mb-20">
                 {/* Image */}
                 <div className="mb-6">
-                  <img
-                    src={masteragentimage}
+                  
+                  <ImageBoxDesigner
+                    imgSrc={masteragentimage}
                     alt="Rules and Regulations"
-                    className="w-full rounded-lg shadow-lg "
+                    className=" opacity-60"
+                    overlayEnabled={true}
+                    height={"h-[300px]"}
                   />
                 </div>
                 <h2 className="text-5xl font-bold mb-4">
@@ -73,11 +78,11 @@ const MasterAgentList = () => {
 
                 {/* next and previuse */}
                 <div className="flex justify-between mt-4 text-xl">
-                <Link to="/mastteragentlist" className="hover:text-[#ff7c7c]">previous: <br /> Master Agent List</Link>
-                <Link to="/superagentlist" className="hover:text-[#ff7c7c]">Next: <br /> Super Agent List</Link>
+                  <Link to="/mastteragentlist" className="hover:text-[#ff7c7c]">previous: <br /> Master Agent List</Link>
+                  <Link to="/superagentlist" className="hover:text-[#ff7c7c]">Next: <br /> Super Agent List</Link>
 
                 </div>
-             
+
 
 
 
@@ -85,7 +90,7 @@ const MasterAgentList = () => {
 
             </div>
           </div>
-            <div className="border-l border-dotted"></div>
+          <div className="border-l border-dotted"></div>
 
           <div className="sticky top-20 h-fit self-start">
             {/* Sidebar */}
@@ -135,6 +140,8 @@ const MasterAgentList = () => {
           </div>
         </div>
       </div>
+
+      <HomeCardSections></HomeCardSections>
     </div>
   );
 };

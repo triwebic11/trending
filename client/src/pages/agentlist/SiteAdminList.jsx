@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import siteadminImage from "../../assets/site-admin-list.jpg"
 import AgentListTable from "../../components/AgentListTable";
 import AgentSearchForm from "../../components/AgentSearchForm";
+import ImageBoxDesigner from "../../components/ImageBoxDesigner";
+import HomeCardSections from "../../components/HomeCardSections";
 const SiteAdminList = () => {
   const data = [
     { id: 8, type: 'সাইট এডমিন', phone: '+855969477041', site: ["BAAJIWALA", "VELKI"] },
@@ -35,11 +37,14 @@ const SiteAdminList = () => {
                   <div className="mb-20">
                     {/* Image */}
                     <div className="mb-6">
-                      <img
-                        src={siteadminImage}
-                        alt="Rules and Regulations"
-                        className="w-full rounded-lg shadow-lg "
-                      />
+                     
+                      <ImageBoxDesigner
+                    imgSrc={siteadminImage}
+                    alt="Rules and Regulations"
+                    className=" opacity-60"
+                    overlayEnabled={true}
+                    height={"h-[300px]"}
+                  />
                     </div>
                     <h2 className="text-5xl font-bold mb-4">
                       Site Agent List
@@ -135,6 +140,7 @@ const SiteAdminList = () => {
           </div>
         </div>
       </div>
+      <HomeCardSections></HomeCardSections>
     </div>
   );
 };

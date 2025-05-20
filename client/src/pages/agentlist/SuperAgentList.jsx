@@ -2,6 +2,8 @@ import superadminimage from "../../assets/super-agent.jpg";
 import AgentSearchForm from "../../components/AgentSearchForm";
 import AgentListTable from "../../components/AgentListTable";
 import { Link } from "react-router-dom";
+import ImageBoxDesigner from "../../components/ImageBoxDesigner";
+import HomeCardSections from "../../components/HomeCardSections";
 
 const SuperAgentList = () => {
   const data = [
@@ -59,11 +61,13 @@ const SuperAgentList = () => {
                 <div className="mb-20">
                   {/* Image */}
                   <div className="mb-6">
-                    <img
-                      src={superadminimage}
-                      alt="Rules and Regulations"
-                      className="w-full rounded-lg shadow-lg "
-                    />
+                    <ImageBoxDesigner
+                    imgSrc={superadminimage}
+                    alt="Rules and Regulations"
+                    className=" opacity-60"
+                    overlayEnabled={true}
+                    height={"h-[300px]"}
+                  />
                   </div>
                   <h2 className="text-5xl font-bold mb-4">Super Agent List</h2>
                   <p className=" hover:text-[#ff7c7c] duration-200">
@@ -173,6 +177,7 @@ const SuperAgentList = () => {
           </div>
         </div>
       </div>
+      <HomeCardSections></HomeCardSections>
     </div>
   );
 };

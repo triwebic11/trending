@@ -3,6 +3,8 @@ import subadminimage from "../../assets/sub-admin.jpg"
 import AgentSearchForm from "../../components/AgentSearchForm";
 import AgentListTable from "../../components/AgentListTable";
 import { Link } from "react-router-dom";
+import ImageBoxDesigner from "../../components/ImageBoxDesigner";
+import HomeCardSections from "../../components/HomeCardSections";
 const SubAdminList = () => {
    const data = [
     { id: 8, type: 'সাব এডমিন', phone: '+855969477041', site: ["BAAJIWALA", "VELKI"] },
@@ -36,11 +38,14 @@ const SubAdminList = () => {
                   <div className="mb-20">
                     {/* Image */}
                     <div className="mb-6">
-                      <img
-                        src={subadminimage}
-                        alt="Rules and Regulations"
-                        className="w-full rounded-lg shadow-lg "
-                      />
+                     
+                      <ImageBoxDesigner
+                    imgSrc={subadminimage}
+                    alt="Rules and Regulations"
+                    className=" opacity-60"
+                    overlayEnabled={true}
+                    height={"h-[300px]"}
+                  />
                     </div>
                     <h2 className="text-5xl font-bold mb-4">
                       Sub Admin List
@@ -136,6 +141,7 @@ const SubAdminList = () => {
           </div>
         </div>
       </div>
+      <HomeCardSections></HomeCardSections>
     </div>
   );
 };
