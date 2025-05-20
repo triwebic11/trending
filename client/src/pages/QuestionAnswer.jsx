@@ -28,7 +28,11 @@ const QuestionAnswer = () => {
 
               {/* Image */}
 
-              <ImageBoxDesigner imgSrc={rule} alt="Rules and Regulation" />
+              <ImageBoxDesigner
+                imgSrc={rule}
+                alt="Rules and Regulation"
+                height={"350px"}
+              />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
                 <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
@@ -55,7 +59,11 @@ const QuestionAnswer = () => {
               </div>
 
               {/* Image */}
-              <ImageBoxDesigner imgSrc={money} alt="Money Transfer" />
+              <ImageBoxDesigner
+                imgSrc={money}
+                alt="Money Transfer"
+                height={"350px"}
+              />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10  text-center">
                 বিকাশ / নগদ / রকেট বা অন্যান্য মোবাইল ব্যাংকিংএর সময় সীমাঃ-
@@ -75,7 +83,11 @@ const QuestionAnswer = () => {
               </div>
 
               {/* Image */}
-              <ImageBoxDesigner imgSrc={register} alt="Register" />
+              <ImageBoxDesigner
+                imgSrc={register}
+                alt="Register"
+                height={"350px"}
+              />
               {/* Main Content */}
               <p className="text-lg leading-relaxed mb-10 text-center">
                 <span className="font-bold">WINPBU</span> – শর্ত এবং নিয়ম এই
