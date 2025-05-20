@@ -6,9 +6,9 @@ const Loading = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setShowLoad(false); // hide loader after 3s
+            setShowLoad(false); // hide loader after 1s
             setText('I wanted 3 sec loading');
-        }, 2000);
+        }, 1000);
 
         return () => clearTimeout(timer); // cleanup
     }, []);
