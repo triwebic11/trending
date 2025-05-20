@@ -6,7 +6,7 @@ import { FiMenu } from "react-icons/fi";
 
 const handleClick = (e) => {
   if (e.target.contains(ref.current)) {
-    setShow(false);
+    // setShow(false);
   }
 };
 
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className="relative">
-      <div className="flex bg-black text-white py-6 px-5">
+      <div className="flex bg-black text-white py-6 px-5 ">
         <ul className="hidden md:flex gap-6 relative z-10">
           {menuItems?.map((item, index) => (
             <li
@@ -55,8 +55,8 @@ const Navbar = () => {
           ))}
         </ul>
         <div
-          onClick={() => setShow(true)}
-          className="md:hidden cursor-pointer text-3xl text-right float-right"
+          onClick={() => setShow(!show)}
+          className="md:hidden cursor-pointer text-3xl text-right  right-5"
         >
           <FiMenu />
         </div>

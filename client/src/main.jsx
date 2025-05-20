@@ -16,6 +16,7 @@ import SuperAgentList from "./pages/agentlist/SuperAgentList.jsx";
 import SuchAgent from "./pages/SuchAgent.jsx";
 import Velki from "./pages/site/Velki.jsx";
 import Loading from "./pages/Loading.jsx";
+import ChatWidget from "./components/Chatwidget.jsx";
 
 const Layout = () => {
   return (
@@ -24,6 +25,7 @@ const Layout = () => {
       <Header />
       <Outlet />
       <Footer />
+      <ChatWidget />
     </div>
   );
 };
