@@ -10,7 +10,7 @@ const AgentSearchForm = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center  text-white px-4 py-16">
+    <div className=" flex flex-col items-center justify-center  text-white px-4 py-10">
         <h2 className="text-center text-lg font-semibold mb-2">
           এজেন্ট এর আইডি নাম্বার দিয়ে খুঁজুন:
         </h2>

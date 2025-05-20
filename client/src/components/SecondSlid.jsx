@@ -30,6 +30,7 @@ const SecondSlid = () => {
               imgSrc={masteragent}
               alt="Master agent list"
               className="h-52 opacity-60"
+              overlayEnabled={true}
             />
             <SubBoxOfSecondSlid
               link={"/masteragentlist"}
@@ -40,6 +41,7 @@ const SecondSlid = () => {
             <ImageBoxDesigner
               imgSrc={superadmin}
               alt="Super admin list"
+              overlayEnabled={true}
               className="h-52 opacity-60"
             />
             <SubBoxOfSecondSlid
@@ -52,6 +54,7 @@ const SecondSlid = () => {
               imgSrc={subadmin}
               alt="Sub admin list"
               className="h-52 opacity-60"
+              overlayEnabled={true}
             />
             <SubBoxOfSecondSlid link={"/subadminlist"} title="Sub Admin List" />
           </div>
@@ -60,6 +63,7 @@ const SecondSlid = () => {
               imgSrc={siteamdin}
               alt="Site admin list"
               className="h-52 opacity-60"
+              overlayEnabled={true}
             />
             <SubBoxOfSecondSlid
               link={"/siteadminlist"}
@@ -71,6 +75,7 @@ const SecondSlid = () => {
               imgSrc={customer}
               alt="Customer Servics"
               className="h-52 opacity-60"
+              overlayEnabled={true}
             />
             <SubBoxOfSecondSlid
               link={"/customerservics"}
