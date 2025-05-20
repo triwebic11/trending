@@ -10,7 +10,7 @@ const Navbar = () => {
     <div>
       <div className="flex bg-black text-white py-6 px-5">
         <ul className="hidden md:flex gap-6 relative z-10">
-          {menuItems.map((item, index) => (
+          {menuItems?.map((item, index) => (
             <li
               key={index}
               className="relative "
@@ -30,7 +30,7 @@ const Navbar = () => {
               {/* Submenu */}
               {item.submenu && openIndex === index && (
                 <ul className="absolute left-0 top-full pt-2  w-56 bg-[#1D1B14] z-0">
-                  {item.submenu.map((subItem, subIndex) => (
+                  {item.submenu?.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <Link
                         to={subItem.path}
