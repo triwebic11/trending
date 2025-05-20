@@ -34,10 +34,10 @@ function SliderHeader() {
 
   return (
     <div className="flex flex-row justify-start items-center py-4">
-      <div className="w-1/6 bg-amber-400 text-center mr-8 ml-3 py-3">
+      <div className=" w-2/6 px-2 bg-amber-400 text-sm md:text-lg text-center mr-8 ml-3 py-3">
         Breaking News
       </div>
-      <div className="slider-container text-white w-5/6 ">
+      <div className="slider-container text-white w-4/6 md:w-5/6  ">
         <Slider {...settings}>
           <div>
             <Link
