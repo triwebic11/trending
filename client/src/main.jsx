@@ -20,6 +20,7 @@ import Loading from "./pages/Loading.jsx";
 const Layout = () => {
   return (
     <div>
+      <Loading />
       <Header />
       <Outlet />
       <Footer />
