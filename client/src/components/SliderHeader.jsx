@@ -73,7 +73,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/suchagent"
               className="hover:text-orange-700 duration-200 cursor-pointer"
             >
               এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন
@@ -81,7 +81,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/howcaniaddtovelkiagentlist"
               className="hover:text-orange-700 duration-200 cursor-pointer"
             >
               কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?

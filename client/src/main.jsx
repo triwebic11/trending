@@ -8,7 +8,6 @@ import Footer from "./components/Footer.jsx";
 import CustomerServics from "./pages/CustomerServics.jsx";
 import QuestionAnswer from "./pages/QuestionAnswer.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
-
 import MasterAgentList from "./pages/agentlist/MasterAgentList.jsx";
 import SiteAdminList from "./pages/agentlist/SiteAdminList.jsx";
 import SubAdminList from "./pages/agentlist/SubAdminList.jsx";
@@ -17,6 +16,8 @@ import SuchAgent from "./pages/SuchAgent.jsx";
 import Velki from "./pages/site/Velki.jsx";
 import Loading from "./pages/Loading.jsx";
 import ChatWidget from "./components/Chatwidget.jsx";
+
+import HowToShare from "./pages/HowToShare.jsx";
 
 const Layout = () => {
   return (
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       { path: "/loading", element: <Loading /> },
       { path: "/velki", element: <Velki /> },
       { path: "/suchagent", element: <SuchAgent /> },
+
+      {
+        path: "/howtoshare",
+        element: <HowToShare />,
+      },
       { path: "*", element: <PageNotFound /> },
     ],
   },

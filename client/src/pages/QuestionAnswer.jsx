@@ -3,6 +3,8 @@ import money from "../assets/MONEY-TRANSFER.png";
 import register from "../assets/REGISTER.png";
 import Container from "../components/Container";
 import ImageBoxDesigner from "../components/ImageBoxDesigner";
+import Sidebar from "../components/Sidebar";
+import HomeCardSections from "../components/HomeCardSections";
 
 const QuestionAnswer = () => {
   return (
@@ -107,49 +109,9 @@ const QuestionAnswer = () => {
         <div className="">
           {/* Sidebar */}
 
-          <aside>
-            <h3 className="text-lg font-semibold mb-2">Search</h3>
-            <div className="flex border border-gray-500 mb-16">
-              <input
-                type="text"
-                className="flex-grow px-3 py-4 bg-transparent text-white focus:outline-none"
-              />
-              <button className="bg-yellow-500 hover:bg-[#ff7c7c] text-black font-semibold px-4">
-                Search
-              </button>
-            </div>
-            <h3 className="text-2xl font-semibold mb-4 border-dotted border-b-2 border-gray-600 pb-1">
-              Recent Posts
-            </h3>
-            <ul className="space-y-4 text-sm ">
-              <li className="border-b-1 border-dotted border-gray-600 pb-1">
-                {" "}
-                এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন
-              </li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1">
-                {" "}
-                কিভাবে আমি ভেরিফাই তে এজেন্ট হতে পারি?
-              </li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1">
-                {" "}
-                ভেরিফাই সাইট
-              </li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1">
-                {" "}
-                একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
-              </li>
-              <li className="border-b-1 border-dotted border-gray-600 pb-1">
-                {" "}
-                WINPBU তে কিভাবে নেনদেন করবেন?
-              </li>
-            </ul>
-
-            <h3 className="text-2xl font-semibold mt-6 border-b-2 border-dotted border-gray-600 pb-1">
-              Recent Comments
-            </h3>
-            <p className="text-sm  mt-2">No comments to show.</p>
-          </aside>
+          <Sidebar />
         </div>
+        <HomeCardSections />
       </Container>
     </div>
   );
