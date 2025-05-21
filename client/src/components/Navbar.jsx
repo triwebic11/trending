@@ -8,7 +8,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 const handleClick = (e) => {
   if (e.target.contains(ref.current)) {
-    // setShow(false);
+    setShow(!show);
   }
 };
 
@@ -68,7 +68,6 @@ const Navbar = () => {
         {show && (
           <div
             ref={(node) => (ref.current = node)}
-            onClick={handleClick}
             className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-center items-center bg-[#1D1B14] px-3 z-40"
           >
             <div
@@ -81,6 +80,7 @@ const Navbar = () => {
               {menuItems?.map((item, index) => (
                 <li
                   key={index}
+                  onClick={() => setShow(!show)}
                   className="relative py-4 hover:text-orange-600"
                   onMouseEnter={() => setOpenIndex(index)}
                   onMouseLeave={() => setOpenIndex(null)}
@@ -100,9 +100,9 @@ const Navbar = () => {
 
                   {/* Submenu */}
                   {item.submenu && openIndex === index && (
-                    <ul className="absolute right-full top-2 pt-2  w-56 bg-black z-0">
+                    <ul className="absolute right-full top-2 pt-2  w-56 bg-[#1D1B14] z-0">
                       {item.submenu?.map((subItem, subIndex) => (
-                        <li key={subIndex}>
+                        <li key={subIndex} onClick={() => setShow(!show)}>
                           <Link
                             to={subItem.path}
                             className="block px-4 py-2 cursor-pointer hover:underline hover:text-orange-600 duration-200"
