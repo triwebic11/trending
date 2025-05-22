@@ -57,7 +57,7 @@ const ListComponant = ({ image, text }) => {
     const { data: agents = [], isLoading, refetch } = useQuery({
         queryKey: ['agents', searchData?.agentType, searchData?.agentId, searchText],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/agent?type=${searchData?.agentType || ''}&agentNumber=${searchData.agentNumber || ''}&uniqueId=${searchData?.agentId || ''}`);
+            const res = await axios.get(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&agentNumber=${searchData.agentNumber || ''}&uniqueId=${searchData?.agentId || ''}`);
             return res.data;
         },
     });

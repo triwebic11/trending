@@ -15,8 +15,8 @@ const useAgents = ({ type, agentNumber, phone }) => {
       if (phone) params.append("phone", phone);
 
       const url = params.toString()
-        ? `http://localhost:5000/api/agent/search?${params}`
-        : `http://localhost:5000/api/agent`;
+        ? `https://api.win-pbu.com/api/agent/search?${params}`
+        : `https://api.win-pbu.com/api/agent`;
 
       const res = await axios.get(url);
       console.log("agents hoooooooooook", res.data);

@@ -8,7 +8,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/login", form);
+    const res = await axios.post("https://api.win-pbu.com/api/login", form);
     localStorage.setItem("token", res.data.token);
     navigate("/dashboard");
   };
