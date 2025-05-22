@@ -9,7 +9,7 @@ import HomeCardSections from "../components/HomeCardSections";
 const Home = () => {
   return (
     <div>
-      <Container className="my-6 px-7  text-center text-white text-8xl">
+      <Container className="my-6  text-center text-white text-8xl">
         <div className="relative">
           <SecondSlid />
           <div className="text-left my-5">
