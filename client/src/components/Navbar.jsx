@@ -48,7 +48,7 @@ const Navbar = () => {
                     <li key={subIndex}>
                       <Link
                         to={subItem.path}
-                        className="block px-4 py-2 cursor-pointer hover:underline hover:text-orange-600 duration-200"
+                        className="block px-4 py-2 cursor-pointer hover:text-orange-600 duration-200"
                       >
                         {subItem.title}
                       </Link>
@@ -80,10 +80,16 @@ const Navbar = () => {
               {menuItems?.map((item, index) => (
                 <li
                   key={index}
-                  onClick={() => setShow(!show)}
+                  onClick={() => {
+                    if (item.submenu) {
+                      setOpenIndex(openIndex === index ? null : index); // Toggle submenu
+                    } else {
+                      setShow(!show);
+                    }
+                  }}
                   className="relative py-4 hover:text-orange-600"
-                  onMouseEnter={() => setOpenIndex(index)}
-                  onMouseLeave={() => setOpenIndex(null)}
+                  // onMouseEnter={() => setOpenIndex(index)}
+                  // onMouseLeave={() => setOpenIndex(null)}
                 >
                   {item.submenu ? (
                     <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group">
@@ -100,12 +106,12 @@ const Navbar = () => {
 
                   {/* Submenu */}
                   {item.submenu && openIndex === index && (
-                    <ul className="absolute right-full top-2 pt-2  w-56 bg-[#1D1B14] z-0">
+                    <ul className="absolute left-0 top-full  w-56 bg-[#1D1B14] shadow-cyan-100 shadow-sm z-40">
                       {item.submenu?.map((subItem, subIndex) => (
                         <li key={subIndex} onClick={() => setShow(!show)}>
                           <Link
                             to={subItem.path}
-                            className="block px-4 py-2 cursor-pointer hover:underline hover:text-orange-600 duration-200"
+                            className="block px-4 py-2 cursor-pointer  hover:text-orange-600 duration-200"
                           >
                             {subItem.title}
                           </Link>
