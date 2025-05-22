@@ -14,7 +14,6 @@ router.post("/agent", async (req, res) => {
 
     const lastAgent = await Agent.findOne().sort({ createdAt: -1 });
     let nextId = lastAgent ? parseInt(lastAgent.uniqueId, 10) + 1 : 1;
-
     let uniqueId;
     let isUnique = false;
 
@@ -46,15 +45,31 @@ router.post("/agent", async (req, res) => {
 
 
 // GET - Fetch all agents
+// GET /api/agent/search?type=value&agentNumber=value&phone=value
 router.get("/agent", async (req, res) => {
   try {
-    const agents = await Agent.find().sort({ createdAt: 1 });
+    const { type, agentNumber, uniqueId } = req.query;
+
+    // Dynamic query object
+    const query = {};
+
+    if (type) query.type = type;
+    if (agentNumber) query.agentNumber = agentNumber;
+    if (uniqueId) query.uniqueId = uniqueId;
+
+    const agents = await Agent.find(query).sort({ createdAt: -1 });
+
+    if (agents.length === 0) {
+      return res.status(404).json({ message: "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।" });
+    }
+
     res.status(200).json(agents);
   } catch (error) {
-    console.error("Error fetching agents:", error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Agent search error:", error);
+    res.status(500).json({ message: "সার্ভার সমস্যা" });
   }
 });
+
 
 // DELETE /api/agent/:id - Delete an agent by ID
 router.delete("/agent/:id", async (req, res) => {

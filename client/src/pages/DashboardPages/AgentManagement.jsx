@@ -6,7 +6,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Listbox } from "@headlessui/react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const options = ["Master", "Supper", "Admin", "Sub Agent"];
+const options = ["Master", "Supper", "Sub_admin", "Site_admin"];
 const siteoptions = ["BAAJIWALA", "VELKI"];
 
 const AgentManagement = () => {

@@ -3,9 +3,12 @@ import Container from "../components/Container";
 import HomeCardSections from "../components/HomeCardSections";
 import telephone from "../assets/telephone.png";
 import Sidebar from "../components/Sidebar";
+import ListComponant from "../components/ListComponant";
 const SuchAgent = () => {
   return (
     <div>
+            <ListComponant image={telephone} text={"Such Agent"}></ListComponant>
+
       <Container className=" text-white">
         <div className="flex flex-col md:flex-row gap-8">
           <div>
