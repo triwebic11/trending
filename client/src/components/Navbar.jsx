@@ -24,7 +24,7 @@ const Navbar = () => {
           {menuItems?.map((item, index) => (
             <li
               key={index}
-              className="relative "
+              className="relative"
               onMouseEnter={() => setOpenIndex(index)}
               onMouseLeave={() => setOpenIndex(null)}
             >
