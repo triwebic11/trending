@@ -18,6 +18,9 @@ import Loading from "./pages/Loading.jsx";
 import ChatWidget from "./components/Chatwidget.jsx";
 
 import HowToShare from "./pages/HowToShare.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Register from "./pages/Register.jsx";
 
 const Layout = () => {
   return (
@@ -53,9 +56,13 @@ const router = createBrowserRouter([
         path: "/howtoshare",
         element: <HowToShare />,
       },
+
       { path: "*", element: <PageNotFound /> },
     ],
   },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/dashboard", element: <Dashboard /> },
+  { path: "/register", element: <Register /> },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
