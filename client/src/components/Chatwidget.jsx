@@ -6,9 +6,9 @@ const ChatWidget = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-48 right-6 z-50 ">
+    <div className="fixed bottom-8 lg:bottom-36 right-6 z-50 ">
       {open && (
-        <div className="fixed top-14 right-6 h-2/3 md:w-2/4 bg-white rounded-xl shadow-xl p-4 text-black">
+        <div className="fixed bottom-24 lg:bottom-52 right-6 h-2/3 md:w-2/4 lg:w-[450px] bg-white rounded-xl shadow-xl p-4 text-black">
           <div className="bg-yellow-600 text-white rounded-t-xl p-6 py-20 flex flex-col gap-2">
             <div className="font-bold text-lg">হাই 👋</div>
             <div className="text-2xl">আমরা কিভাবে সাহায্য করতে পারি?</div>
