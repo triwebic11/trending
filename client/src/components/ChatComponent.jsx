@@ -70,9 +70,9 @@ function ChatComponent({ currentUserId, targetUserId }) {
               }`}
             >
               <span className="block font-medium mb-1">
-                {msg.senderId === currentUserId ? "You" : "Them"}
+                {msg.senderId === currentUserId ? "You:" : "Admin:"}
               </span>
-              Your message is: {msg.content}
+              {msg.content}
             </div>
           </div>
         ))}

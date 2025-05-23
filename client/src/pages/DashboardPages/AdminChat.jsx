@@ -55,7 +55,7 @@ function AdminChat({ currentUserId, targetUserId }) {
               }`}
             >
               <span className="block font-medium mb-1">
-                {msg.senderId === currentUserId ? "You" : "Them"}
+                {msg.senderId === currentUserId ? "You" : "User :"}
               </span>
               {msg.content}
             </div>
