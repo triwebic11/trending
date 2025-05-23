@@ -6,7 +6,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Listbox } from "@headlessui/react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const options = ["Master", "Supper", "Admin", "Sub Agent"];
+const options = ["Master", "Supper", "Sub_admin", "Site_admin"];
 const siteoptions = ["BAAJIWALA", "VELKI"];
 
 const AgentManagement = () => {
@@ -21,7 +21,7 @@ const AgentManagement = () => {
   const { data: agents = [], isLoading, refetch } = useQuery({
     queryKey: ["agents"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/api/agent");
+      const res = await axios.get("https://api.win-pbu.com/api/agent");
       return res.data;
     },
   });
@@ -30,7 +30,7 @@ const AgentManagement = () => {
   // Add agent
   const mutation = useMutation({
     mutationFn: async (data) => {
-      const res = await axios.post("http://localhost:5000/api/agent", data);
+      const res = await axios.post("https://api.win-pbu.com/api/agent", data);
       return res.data;
     },
     onSuccess: (data, variables) => {
@@ -52,7 +52,7 @@ const AgentManagement = () => {
   // Delete agent
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await axios.delete(`http://localhost:5000/api/agent/${id}`);
+      const res = await axios.delete(`https://api.win-pbu.com/api/agent/${id}`);
       return res.data;
     },
     onSuccess: () => {

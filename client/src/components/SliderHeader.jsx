@@ -37,7 +37,7 @@ function SliderHeader() {
       <div className="">
    
     </div>
-        <div className="relative w-2/6 px-2 bg-amber-400 text-sm md:text-lg text-center mr-8 ml-3 py-3">
+        <div className="relative w-2/6 px-2 bg-amber-400 text-sm md:text-lg text-center mr-8  py-3">
           Breaking News
           <span className="absolute -top-[5px] -right-3 w-0 h-0 border-t-[30px] border-t-transparent border-l-[20px] border-l-amber-400 rotate-90"></span>
         </div>

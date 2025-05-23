@@ -16,19 +16,19 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন",
-      link: "/masteragentlist",
+      link: "/suchagent",
       imgSrc: img1,
     },
     {
       id: 2,
       title: "কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?",
-      link: "/superadminlist",
+      link: "/velki",
       imgSrc: img2,
     },
     {
       id: 3,
       title: "ভেল্কি সাইট",
-      link: "/subadminlist",
+      link: "/velki",
       imgSrc: img3,
     },
   ];
@@ -36,25 +36,25 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?",
-      link: "/masteragentlist",
+      link: "/questionanswer",
       imgSrc: img4,
     },
     {
       id: 2,
       title: "WINPBU তে কিভাবে লেনদেন করবেন?",
-      link: "/superadminlist",
+      link: "/",
       imgSrc: img5,
     },
     {
       id: 3,
       title: "কিভাবে একাউন্ট খুলবেন?",
-      link: "/subadminlist",
+      link: "/",
       imgSrc: img6,
     },
     {
       id: 3,
       title: "Site Admin List",
-      link: "/subadminlist",
+      link: "/siteadminlist",
       imgSrc: img7,
     },
   ];

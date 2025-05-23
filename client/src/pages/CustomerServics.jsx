@@ -4,6 +4,7 @@ import customer from "../assets/customer.jpeg";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import ListComponant from "../components/ListComponant";
 
 const CustomerServics = () => {
   const data = [
@@ -25,6 +26,8 @@ const CustomerServics = () => {
   // />
   return (
     <div>
+      <ListComponant image={customer} text={"Customer service List"}></ListComponant>
+
       <Container className=" text-white  px-6 py-10 font-sans">
         <div className=" flex flex-col md:flex-row gap-8 justify-between">
           <div className="">

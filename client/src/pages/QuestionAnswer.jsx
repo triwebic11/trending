@@ -111,8 +111,8 @@ const QuestionAnswer = () => {
 
           <Sidebar />
         </div>
-        <HomeCardSections />
       </Container>
+        <HomeCardSections />
     </div>
   );
 };

@@ -17,6 +17,10 @@ mongoose
 app.use("/api", authRoutes);
 app.use("/api", agentRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Hello from cPanel Node.js app!');
+});
+
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
