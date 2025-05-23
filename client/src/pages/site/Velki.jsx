@@ -71,7 +71,7 @@ const Velki = () => {
               </div>
             </div>
           </div>
-          <div class="divide-y-3 divide-dashed divide-white"></div>
+          <div className="border-l border-dotted"></div>
           <div className="">
             {/* Sidebar */}
 

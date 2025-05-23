@@ -105,6 +105,7 @@ const QuestionAnswer = () => {
             </div>
           </div>
         </div>
+        <div className="border-l border-dotted"></div>
 
         <div className="">
           {/* Sidebar */}
