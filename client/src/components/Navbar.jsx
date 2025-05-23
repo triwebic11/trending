@@ -68,7 +68,7 @@ const Navbar = () => {
         {show && (
           <div
             ref={(node) => (ref.current = node)}
-            className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-center items-center bg-[#1D1B14] px-3 z-40 "
+            className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-start items-start bg-[#1D1B14] px-3 z-40 pl-10 pt-20"
           >
             <div
               onClick={() => setShow(!show)}
@@ -88,8 +88,8 @@ const Navbar = () => {
                     }
                   }}
                   className="relative py-4 hover:text-[#ff7c7c]"
-                // onMouseEnter={() => setOpenIndex(index)}
-                // onMouseLeave={() => setOpenIndex(null)}
+                  // onMouseEnter={() => setOpenIndex(index)}
+                  // onMouseLeave={() => setOpenIndex(null)}
                 >
                   {item.submenu ? (
                     <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group ">
