@@ -34,6 +34,7 @@ const Home = () => {
       complainRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
+  
   return (
     <div>
       <Container className="my-6  text-center text-white text-8xl">

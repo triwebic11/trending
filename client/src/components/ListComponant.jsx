@@ -62,11 +62,11 @@ const ListComponant = ({ image, text }) => {
     },
   });
 
-  // console.log('agentssssss', agents);
+  console.log('agentssssss', agents);
   return (
     <div className="relative">
       <div className=" text-white  px-6 py-10 font-sans">
-        <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 px-5 ">
+        <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 ">
           <div className="">
 
             <div className="">
