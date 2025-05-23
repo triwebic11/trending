@@ -7,6 +7,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { MdEmojiEmotions } from "react-icons/md";
 import { MdOutlineAttachFile } from "react-icons/md";
 import { MdGif } from "react-icons/md";
+import ChatComponent from "./ChatComponent";
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(false);
@@ -81,10 +82,7 @@ const ChatWidget = () => {
             মেসেজ
           </div>
           <div className="h-[450px] flex flex-col justify-center items-center gap-8">
-            <div className="text-center">
-              No message yet. Please click on the button <br /> below to send us
-              a message.
-            </div>
+            <div className="text-center">কোনও মেসেজ নেই</div>
             <button
               onClick={() => setContact(!contact)}
               className="bg-purple-800 text-white hover:opacity-80 duration-200 px-4 py-2 rounded flex justify-between items-center cursor-pointer"
@@ -105,20 +103,14 @@ const ChatWidget = () => {
       )}
       {contact && (
         <div className="fixed top-4 right-6 h-3/4  w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10">
-          <div onClick={() => setContact(!contact)} className=" flex gap-2  ">
+          <div
+            onClick={() => setContact(!contact)}
+            className=" flex gap-2  absolute top-1 left-1 my-2"
+          >
             <FaAngleLeft className="text-4xl hover:bg-gray-200 p-2 rounded-2xl cursor-pointer" />
             <img src="chat.png" alt="chat" />
           </div>
-          <div className="fixed bottom-60 focus-visible:border-[1px] focus-visible:border-purple-600 rounded-lg border border-gray-300 inline-flex items-center px-1 gap-3">
-            <input
-              type="text"
-              placeholder="মেসেজ"
-              className="px-2 py-2 outline-none "
-            />
-            <MdEmojiEmotions className="text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
-            <MdGif className="text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
-            <MdOutlineAttachFile className="text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
-          </div>
+          <ChatComponent currentUserId="user1" targetUserId="admin" />
         </div>
       )}
     </div>

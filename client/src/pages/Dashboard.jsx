@@ -7,10 +7,13 @@ import AgentManagement from "./DashboardPages/AgentManagement";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
 
+import AdminChat from "./DashboardPages/AdminChat";
+
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openAgent, setOpenAgent] = useState(true);
   const [show, setShow] = useState(false);
+  const [adminMessage, setAdminMessage] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,8 +38,21 @@ const Dashboard = () => {
 
               {/* Sidebar Menu (Desktop) */}
               <div className="flex-col gap-4 hidden md:flex">
-                <Link className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]">
+                <Link
+                  onClick={() => {
+                    setOpenAgent(!openAgent);
+                  }}
+                  className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]"
+                >
                   Manage Agent List
+                </Link>
+                <Link
+                  onClick={() => (
+                    setAdminMessage(!adminMessage), setOpenAgent(!openAgent)
+                  )}
+                  className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]"
+                >
+                  Admin Message Dashboard
                 </Link>
               </div>
 
@@ -64,8 +80,21 @@ const Dashboard = () => {
                   />
 
                   <div className="flex flex-col gap-4">
-                    <Link className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]">
+                    <Link
+                      onClick={() => {
+                        setOpenAgent(!openAgent);
+                      }}
+                      className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]"
+                    >
                       Manage Agent List
+                    </Link>
+                    <Link
+                      onClick={() => (
+                        setAdminMessage(!adminMessage), setOpenAgent(!openAgent)
+                      )}
+                      className="bg-gray-700 w-full rounded-2xl py-3 px-3 hover:bg-[#111111]"
+                    >
+                      Admin Message Dashboard
                     </Link>
                   </div>
                 </div>
@@ -75,14 +104,15 @@ const Dashboard = () => {
         </div>
 
         {/* Main Content Section */}
-        <div
-          className="md:ml-[20%] w-full bg-[#1e1e1e] min-h-screen transition-all duration-300"
-        >
+        <div className="md:ml-[20%] w-full bg-[#1e1e1e] min-h-screen transition-all duration-300">
           {/* Main content render area */}
           <Outlet />
 
           {/* Agent Management default render */}
-          <AgentManagement />
+          {openAgent && <AgentManagement />}
+          {adminMessage && (
+            <AdminChat currentUserId="admin" targetUserId="user1" />
+          )}
         </div>
       </div>
     </div>
