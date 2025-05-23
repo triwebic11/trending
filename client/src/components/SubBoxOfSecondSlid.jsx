@@ -6,7 +6,7 @@ const SubBoxOfSecondSlid = ({ link, title }) => {
     <div className="absolute top-1/3 left-10 flex flex-col items-start z-20">
       <div>
         <Link to={link} className="text-black">
-          <span className="bg-amber-400 px-2 py-1 rounded-lg text-sm  hover:cursor-pointer hover:bg-orange-500">
+          <span className="bg-amber-400 px-2 py-1 rounded-lg text-sm  hover:cursor-pointer hover:bg-[#ff7c7c] duration-200">
             Winpbu
           </span>
         </Link>
@@ -21,7 +21,7 @@ const SubBoxOfSecondSlid = ({ link, title }) => {
       </div>
       <div className="-mt-5">
         <Link to={link}>
-          <span className="bg-amber-400 px-3 py-5 rounded-lg text-sm text-black hover:cursor-pointer hover:bg-orange-500">
+          <span className=" hidden md:inline-flex bg-amber-400 px-3 py-5 rounded-lg text-sm text-black hover:cursor-pointer hover:bg-[#ff7c7c]">
             এই খানে ক্লিক করে বিস্তারিত জানুন...
           </span>
         </Link>

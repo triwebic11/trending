@@ -62,18 +62,18 @@ const HomeCardSections = () => {
     <div>
       <div className="border-b border-dotted border-white my-10"> </div>
       <Container>
-        <p className="text-5xl text-white font-semibold">You May Also Like:</p>
+        <p className="text-4xl text-white font-semibold">You May Also Like:</p>
         <div className="border border-dotted border-white my-2"> </div>
 
         {/* grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
           {arr1?.map((item) => (
-            <div className="relative w-full overflow-hidden cursor-pointer">
+            <div className="relative w-full  overflow-hidden cursor-pointer">
               <ImageBoxDesigner
                 imgSrc={item.imgSrc}
                 alt="Sub admin list"
-                className="h-30 opacity-60"
-                height="h-[250px]"
+                className="h-30 opacity-60 object-cover"
+                height="h-[200px]"
                 overlayEnabled={false}
               />
 
@@ -81,7 +81,7 @@ const HomeCardSections = () => {
               <div className="inset-0 flex items-center ">
                 <Link
                   to={item.link}
-                  className="text-2xl hover:text-[#ff7c7c] font-bold text-white px-4 -mt-3 rounded"
+                  className="text-xl hover:text-[#ff7c7c] font-bold text-white px-4 -mt-3 rounded"
                 >
                   {item.title}
                 </Link>
@@ -107,7 +107,7 @@ const HomeCardSections = () => {
               <div className="inset-0 flex items-center ">
                 <Link
                   to={item.link}
-                  className="text-2xl hover:text-[#ff7c7c] font-bold text-white px-4 -mt-3 rounded"
+                  className="text-xl hover:text-[#ff7c7c] font-bold text-white px-4 -mt-3 rounded"
                 >
                   {item.title}
                 </Link>
@@ -117,23 +117,23 @@ const HomeCardSections = () => {
           ))}
         </div>
 
-        <p className="text-3xl text-white  pt-10">Archives</p>
+        <p className="text-2xl text-white  pt-10">Archives</p>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
-        <p className="text-md text-white  hover:text-[#ff7c7c]">January 2025</p>
+        <p className="text-md text-white cursor-pointer  hover:text-[#ff7c7c]">January 2025</p>
 
-        <p className="text-3xl text-white  pt-20">Categories</p>
+        <p className="text-2xl text-white  pt-20">Categories</p>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
-        <p className="text-2xl pb-2 text-white  hover:text-[#ff7c7c] border-b border-dotted">
-          <Link to={"/questionanswer"}>FAQ</Link>
+        <p className="text-md py-2 text-white   border-b border-dotted">
+          <Link to={"/questionanswer"} className="hover:text-[#ff7c7c]">FAQ</Link>
         </p>
-        <p className="text-2xl pb-2 text-white  hover:text-[#ff7c7c] border-b border-dotted">
-          Uncategorized
+        <p className="text-md py-2 text-white   border-b border-dotted">
+          <Link to={"/"} className="hover:text-[#ff7c7c]">Uncategorized</Link>
         </p>
-        <p className="text-2xl pb-2 text-white  hover:text-[#ff7c7c] border-b border-dotted">
-          <Link to="/velki">VELKI</Link>
+        <p className="text-md py-2 text-white   border-b border-dotted">
+          <Link to={"/velki"} className="hover:text-[#ff7c7c]" >VELKI</Link>
         </p>
-        <p className="text-2xl pb-2 text-white  hover:text-[#ff7c7c] border-b border-dotted mb-20">
-          <Link to="/">Winpbu</Link>
+        <p className="text-md py-2 text-white   ">
+          <Link to={"/"} className="hover:text-[#ff7c7c] ">Winpbu</Link>
         </p>
       </Container>
     </div>

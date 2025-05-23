@@ -14,12 +14,12 @@ const Home = () => {
           <SecondSlid />
           <div className="text-left my-5">
             <div>
-              <h1 className="text-7xl font-bold">WINPBU তে স্বাগতম</h1>
+              <h1 className="text-4xl font-bold">WINPBU তে স্বাগতম</h1>
             </div>
             <div className="text-base font-semibold my-4">
               <AgentSearchForm />
             </div>
-            <div className=" text-lg ">
+            <div className=" text-sm ">
               <p>
                 WINPBU বাংলাদেশ – বাংলাদেশের শীর্ষস্থানীয় অনলাইন গেমিং এবং
                 বেটিং প্ল্যাটফর্ম পরিচালনা প্রতিষ্টান। আমদের সাইট গুলো হচ্ছে
