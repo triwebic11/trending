@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className="sticky top-20 h-fit self-start">
       {" "}
       <aside>
         <h3 className="text-lg font-semibold mb-2">Search</h3>
@@ -12,9 +12,9 @@ const Sidebar = () => {
             type="text"
             className="flex-grow px-3 py-4 bg-transparent text-white focus:outline-none"
           />
-          <button className="bg-yellow-500 hover:bg-[#ff7c7c] text-black font-semibold px-4">
+          <Link to="/suchagent" className="bg-yellow-500 hover:bg-[#ff7c7c] text-black font-semibold px-4 flex justify-center items-center"><button className="">
             Search
-          </button>
+          </button></Link>
         </div>
         <h3 className="text-2xl font-semibold mb-4 border-dotted border-b-2 border-gray-600 pb-1">
           Recent Posts
