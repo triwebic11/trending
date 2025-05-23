@@ -33,23 +33,21 @@ function SliderHeader() {
   };
 
   return (
-    <div className="flex flex-row justify-start items-center py-4">
+    <div className="flex flex-row justify-start items-center py-2">
       <div className="">
-   
-    </div>
-        <div className="relative w-2/6 px-2 bg-amber-400 text-sm md:text-lg text-center mr-8  py-3">
-          Breaking News
-          <span className="absolute -top-[5px] -right-3 w-0 h-0 border-t-[30px] border-t-transparent border-l-[20px] border-l-amber-400 rotate-90"></span>
-        </div>
-      {/* <div className=" w-2/6 px-2 bg-amber-400 text-sm md:text-lg text-center mr-8 ml-3 py-3">
+
+      </div>
+      <div className="relative w-[250px] px-2 md:w-1/2 bg-amber-400 text-sm  text-center mr-8  py-1">
         Breaking News
-      </div> */}
-      <div className="slider-container text-white w-4/6 md:w-5/6  ">
+        <span className="absolute -top-[4.5px] -right-3 w-0 h-0 border-t-[30px] border-t-transparent border-l-[20px] border-l-amber-400 rotate-90"></span>
+      </div>
+
+      <div className="slider-container text-white text-sm w-4/6 md:w-5/6  ">
         <Slider {...settings}>
           <div>
             <Link
               to="/"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
             </Link>
@@ -57,7 +55,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               WINPBU তে কিভাবে লেনদেন করবেন?
             </Link>
@@ -65,7 +63,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               কিভাবে একাউন্ট খুলবেন?
             </Link>
@@ -73,7 +71,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               Site Admin List
             </Link>
@@ -81,7 +79,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/suchagent"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন
             </Link>
@@ -89,7 +87,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/howcaniaddtovelkiagentlist"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?
             </Link>
@@ -97,7 +95,7 @@ function SliderHeader() {
           <div>
             <Link
               to="/"
-              className="hover:text-orange-700 duration-200 cursor-pointer"
+              className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               ভেল্কি সাইট
             </Link>

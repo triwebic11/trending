@@ -48,7 +48,7 @@ const Navbar = () => {
                     <li key={subIndex}>
                       <Link
                         to={subItem.path}
-                        className="block px-4 py-2 cursor-pointer hover:text-orange-600 duration-200"
+                        className="block px-4 py-2 cursor-pointer hover:text-[#ff7c7c] duration-200"
                       >
                         {subItem.title}
                       </Link>
@@ -68,15 +68,15 @@ const Navbar = () => {
         {show && (
           <div
             ref={(node) => (ref.current = node)}
-            className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-center items-center bg-[#1D1B14] px-3 z-40"
+            className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-center items-center bg-[#1D1B14] px-3 z-40 "
           >
             <div
               onClick={() => setShow(!show)}
-              className="fixed top-8 right-5 hover:order-6 cursor-pointer text-3xl hover:text-orange-500"
+              className="fixed top-8 right-5 hover:order-6 cursor-pointer text-3xl hover:text-[#ff7c7c]"
             >
               <IoCloseSharp />
             </div>
-            <ul className=" gap-6 relative z-10">
+            <ul className=" gap-6 relative z-10 ">
               {menuItems?.map((item, index) => (
                 <li
                   key={index}
@@ -87,31 +87,31 @@ const Navbar = () => {
                       setShow(!show);
                     }
                   }}
-                  className="relative py-4 hover:text-orange-600"
-                  // onMouseEnter={() => setOpenIndex(index)}
-                  // onMouseLeave={() => setOpenIndex(null)}
+                  className="relative py-4 hover:text-[#ff7c7c]"
+                // onMouseEnter={() => setOpenIndex(index)}
+                // onMouseLeave={() => setOpenIndex(null)}
                 >
                   {item.submenu ? (
-                    <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group">
+                    <span className="cursor-pointer  hover:underline flex items-center gap-1 relative group ">
                       <span>{item.title}</span>{" "}
-                      <span className=" group-hover:rotate-180 duration-300">
+                      <span className=" group-hover:rotate-180 duration-300  ">
                         <FaChevronDown />
                       </span>
                     </span>
                   ) : (
-                    <Link to={item.path} className="hover:underline py-3">
+                    <Link to={item.path} className="hover:underline py-3 ">
                       {item.title}
                     </Link>
                   )}
 
                   {/* Submenu */}
                   {item.submenu && openIndex === index && (
-                    <ul className="absolute left-0 top-full  w-56 bg-[#1D1B14] shadow-cyan-100 shadow-sm z-40">
+                    <ul className="absolute left-0 top-full  w-56 bg-[#1D1B14] shadow-cyan-100 shadow-sm z-40  ">
                       {item.submenu?.map((subItem, subIndex) => (
                         <li key={subIndex} onClick={() => setShow(!show)}>
                           <Link
                             to={subItem.path}
-                            className="block px-4 py-2 cursor-pointer  hover:text-orange-600 duration-200"
+                            className="block px-4 py-2 cursor-pointer   duration-200"
                           >
                             {subItem.title}
                           </Link>

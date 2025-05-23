@@ -41,7 +41,7 @@ const Home = () => {
           <SecondSlid />
           <div className="text-left my-5">
             <div>
-              <h1 className="text-7xl font-bold">WINPBU তে স্বাগতম</h1>
+              <h1 className="text-4xl font-bold">WINPBU তে স্বাগতম</h1>
             </div>
             <div className="text-base font-semibold my-4" >
               <div className="flex flex-col items-center justify-center text-white px-4 py-10">

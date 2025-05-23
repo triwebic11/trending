@@ -16,38 +16,40 @@ const Sidebar = () => {
             Search
           </button></Link>
         </div>
-        <h3 className="text-2xl font-semibold mb-4 border-dotted border-b-2 border-gray-600 pb-1">
+        <h3 className="text-2xl font-semibold  ">
           Recent Posts
         </h3>
+        <div className="border border-dotted border-white my-2 p-[1px]"> </div>
         <ul className="space-y-4 text-sm ">
-          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
+          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
             <Link to={"/suchagent"}>এজেন্ট কে ফেন নাম্বার দিয়ে খুঁজুন</Link>
           </li>
-          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
+          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
             <Link to={"/velki"}>কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?</Link>
           </li>
-          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
+          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
             <Link to={"/velki"}> ভেল্কি সাইট</Link>
           </li>
-          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
+          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
             <Link to={"/questionanswer"}>
               {" "}
               একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
             </Link>
           </li>
-          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
+          <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
             <Link to={"/howtoshare"}> WINPBU তে কিভাবে নেনদেন করবেন?</Link>
           </li>
         </ul>
 
-        <h3 className="text-2xl font-semibold mt-6 border-b-2 border-dotted border-gray-600 pb-1">
+        <h3 className="text-2xl font-semibold mt-8  pb-1 ">
           Recent Comments
         </h3>
+        <div className="border border-dotted border-white my-2 p-[1px]"> </div>
         <p className="text-sm  mt-2">No comments to show.</p>
       </aside>
     </div>
