@@ -68,7 +68,8 @@ const SocialShare = ({
       >
         {/* Share Icon */}
         <button
-          aria-label="Share"
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
           className="w-10 h-10 rounded-full bg-gray-700/70 backdrop-blur flex items-center justify-center text-white hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           <Share2 size={18} />
@@ -76,6 +77,8 @@ const SocialShare = ({
 
         {/* Social Icons */}
         <div
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
           className={`absolute -left-36 -translate-x-1/2 -top-1 flex space-x-2 pt-2 transition-opacity ${
             open ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
