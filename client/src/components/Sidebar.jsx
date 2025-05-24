@@ -12,13 +12,14 @@ const Sidebar = () => {
             type="text"
             className="flex-grow px-3 py-4 bg-transparent text-white focus:outline-none"
           />
-          <Link to="/suchagent" className="bg-yellow-500 hover:bg-[#ff7c7c] text-black font-semibold px-4 flex justify-center items-center"><button className="">
-            Search
-          </button></Link>
+          <Link
+            to="/suchagent"
+            className="bg-yellow-500 hover:bg-[#ff7c7c] text-black font-semibold px-4 flex justify-center items-center"
+          >
+            <button className="">Search</button>
+          </Link>
         </div>
-        <h3 className="text-2xl font-semibold  ">
-          Recent Posts
-        </h3>
+        <h3 className="text-2xl font-semibold  ">Recent Posts</h3>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
         <ul className="space-y-4 text-sm ">
           <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
@@ -27,15 +28,17 @@ const Sidebar = () => {
           </li>
           <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
-            <Link to={"/velki"}>কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?</Link>
+            <Link to={"/howtobeagent"}>
+              কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?
+            </Link>
           </li>
           <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
-            <Link to={"/velki"}> ভেল্কি সাইট</Link>
+            <Link to={"/velkisite"}> ভেল্কি সাইট</Link>
           </li>
           <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-[#ff7c7c] hover:underline duration-200">
             {" "}
-            <Link to={"/questionanswer"}>
+            <Link to={"/rulestoopenaccount"}>
               {" "}
               একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
             </Link>
@@ -46,9 +49,7 @@ const Sidebar = () => {
           </li>
         </ul>
 
-        <h3 className="text-2xl font-semibold mt-8  pb-1 ">
-          Recent Comments
-        </h3>
+        <h3 className="text-2xl font-semibold mt-8  pb-1 ">Recent Comments</h3>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
         <p className="text-sm  mt-2">No comments to show.</p>
       </aside>

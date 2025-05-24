@@ -16,7 +16,7 @@ const ChatWidget = () => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (msgbox.current && !msgbox.current.contains(event.target)) {
+      if (open) {
         setOpen(false);
         setMessage(false);
         setContact(false);

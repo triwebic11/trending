@@ -24,9 +24,9 @@ import Register from "./pages/Register.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SearchAgentByPhone from "./pages/CardPages/SearchAgentByPhone.jsx";
 import HowToBeAgent from "./pages/CardPages/HowToBeAgent.jsx";
-import VelkiAite from "./pages/CardPages/VelkiAite.jsx";
+import VelkiSite from "./pages/CardPages/VelkiSite.jsx";
 import RulesAndRegulationForOpenAccount from "./pages/CardPages/RulesAndRegulationForOpenAccount.jsx";
-import VelkiMoneyTransection from "./pages/CardPages/VelkiMoneyTransection.jsx";
+
 import HowToOpenAccount from "./pages/CardPages/HowToOpenAccount.jsx";
 
 const queryClient = new QueryClient();
@@ -60,12 +60,16 @@ const router = createBrowserRouter([
       { path: "/loading", element: <Loading /> },
       { path: "/velki", element: <Velki /> },
       { path: "/suchagent", element: <SuchAgent /> },
-      { path: "/search-agent-by-phone", element: <SearchAgentByPhone /> },
-      { path: "/how-to-be-a-agent", element: <HowToBeAgent /> },
-      { path: "/ভেল্কি-সাইট", element: <VelkiAite /> },
-      { path: "/rules-and-regulation-for-open-account", element: <RulesAndRegulationForOpenAccount /> },
-      { path: "/ভেল্কি-তে-কিভাবে-লেনদেন-ক", element: <VelkiMoneyTransection /> },
-      { path: "/কিভাবে-একাউন্ট-খুলবেন", element: <HowToOpenAccount /> },
+      { path: "/searchagentbyphone", element: <SearchAgentByPhone /> },
+      { path: "/howtobeagent", element: <HowToBeAgent /> },
+      { path: "/velkisite", element: <VelkiSite /> },
+      {
+        path: "/rulestoopenaccount",
+        element: <RulesAndRegulationForOpenAccount />,
+      },
+
+      { path: "/howtoopen", element: <HowToOpenAccount /> },
+      { path: "/siteadminlist", element: <SiteAdminList /> },
 
       {
         path: "/howtoshare",

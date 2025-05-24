@@ -16,19 +16,19 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন",
-      link: "/search-agent-by-phone",
+      link: "/suchagent",
       imgSrc: img1,
     },
     {
       id: 2,
       title: "কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?",
-      link: "/how-to-be-a-agent",
+      link: "/howtobeagent",
       imgSrc: img2,
     },
     {
       id: 3,
       title: "ভেল্কি সাইট",
-      link: "/ভেল্কি-সাইট",
+      link: "/velkisite",
       imgSrc: img3,
     },
   ];
@@ -36,19 +36,19 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?",
-      link: "/rules-and-regulation-for-open-account",
+      link: "/rulestoopenaccount",
       imgSrc: img4,
     },
     {
       id: 2,
       title: "WINPBU তে কিভাবে লেনদেন করবেন?",
-      link: "/ভেল্কি-তে-কিভাবে-লেনদেন-ক",
+      link: "/howtoshare",
       imgSrc: img5,
     },
     {
       id: 3,
       title: "কিভাবে একাউন্ট খুলবেন?",
-      link: "/কিভাবে-একাউন্ট-খুলবেন",
+      link: "/howtoopen",
       imgSrc: img6,
     },
     {
@@ -68,7 +68,10 @@ const HomeCardSections = () => {
         {/* grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
           {arr1?.map((item) => (
-            <Link to={item.link} className="relative w-full  overflow-hidden cursor-pointer">
+            <Link
+              to={item.link}
+              className="relative w-full  overflow-hidden cursor-pointer"
+            >
               <ImageBoxDesigner
                 imgSrc={item.imgSrc}
                 alt="Sub admin list"
@@ -94,7 +97,10 @@ const HomeCardSections = () => {
         {/* grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {arr2?.map((item) => (
-            <Link to={item.link} className="relative w-full overflow-hidden cursor-pointer">
+            <Link
+              to={item.link}
+              className="relative w-full overflow-hidden cursor-pointer"
+            >
               <ImageBoxDesigner
                 imgSrc={item.imgSrc}
                 alt="Sub admin list"
@@ -119,21 +125,31 @@ const HomeCardSections = () => {
 
         <p className="text-2xl text-white  pt-10">Archives</p>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
-        <p className="text-md text-white cursor-pointer  hover:text-[#ff7c7c]">January 2025</p>
+        <p className="text-md text-white cursor-pointer  hover:text-[#ff7c7c]">
+          January 2025
+        </p>
 
         <p className="text-2xl text-white  pt-20">Categories</p>
         <div className="border border-dotted border-white my-2 p-[1px]"> </div>
         <p className="text-md py-2 text-white   border-b border-dotted">
-          <Link to={"/questionanswer"} className="hover:text-[#ff7c7c]">FAQ</Link>
+          <Link to={"/questionanswer"} className="hover:text-[#ff7c7c]">
+            FAQ
+          </Link>
         </p>
         <p className="text-md py-2 text-white   border-b border-dotted">
-          <Link to={"/"} className="hover:text-[#ff7c7c]">Uncategorized</Link>
+          <Link to={"/"} className="hover:text-[#ff7c7c]">
+            Uncategorized
+          </Link>
         </p>
         <p className="text-md py-2 text-white   border-b border-dotted">
-          <Link to={"/velki"} className="hover:text-[#ff7c7c]" >VELKI</Link>
+          <Link to={"/velki"} className="hover:text-[#ff7c7c]">
+            VELKI
+          </Link>
         </p>
         <p className="text-md py-2 text-white   ">
-          <Link to={"/"} className="hover:text-[#ff7c7c] ">Winpbu</Link>
+          <Link to={"/"} className="hover:text-[#ff7c7c] ">
+            Winpbu
+          </Link>
         </p>
       </Container>
     </div>

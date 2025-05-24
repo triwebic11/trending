@@ -90,3 +90,6 @@ const SecondSlid = () => {
 };
 
 export default SecondSlid;
+
+
+  

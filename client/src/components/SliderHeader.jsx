@@ -44,7 +44,7 @@ function SliderHeader() {
         <Slider {...settings}>
           <div>
             <Link
-              to="/"
+              to="/rulestoopenaccount"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?
@@ -52,7 +52,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/howtoshare"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               WINPBU তে কিভাবে লেনদেন করবেন?
@@ -60,7 +60,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/howtoopen"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               কিভাবে একাউন্ট খুলবেন?
@@ -68,7 +68,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/siteadminlist"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               Site Admin List
@@ -76,7 +76,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/suchagent"
+              to="/searchagentbyphone"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন
@@ -84,7 +84,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/howcaniaddtovelkiagentlist"
+              to="/howtobeagent"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?
@@ -92,7 +92,7 @@ function SliderHeader() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/velkisite"
               className="hover:text-[#ff7c7c] duration-200 cursor-pointer"
             >
               ভেল্কি সাইট
@@ -105,3 +105,11 @@ function SliderHeader() {
 }
 
 export default SliderHeader;
+
+// { path: "/suchagent", element: <SuchAgent /> },
+//     { path: "/search-agentby-phone", element: <SearchAgentByPhone /> },
+//     { path: "/how-to-be-a-agent", element: <HowToBeAgent /> },
+//     { path: "/velkisite", element: <VelkiAite /> },
+//     { path: "/rules-to-open-account", element: <RulesAndRegulationForOpenAccount /> },
+//     { path: "/velki-mony-transfer", element: <VelkiMoneyTransection /> },
+//     { path: "/howt-open", element: <HowToOpenAccount /> },
