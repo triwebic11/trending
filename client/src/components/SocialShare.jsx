@@ -70,7 +70,7 @@ const SocialShare = ({
         <button
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
-          className="w-10 h-10 rounded-full bg-gray-700/70 backdrop-blur flex items-center justify-center text-white hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          className="w-10 h-10 rounded-full bg-gray-700/70 backdrop-blur flex items-center justify-center text-black hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           <Share2 size={18} />
         </button>

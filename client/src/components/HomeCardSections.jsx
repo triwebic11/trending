@@ -16,19 +16,19 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "এজেন্ট কে ফোন নাম্বার দিয়ে খুঁজুন",
-      link: "/suchagent",
+      link: "/search-agent-by-phone",
       imgSrc: img1,
     },
     {
       id: 2,
       title: "কিভাবে আমি ভেল্কি তে এজেন্ট হতে পারি?",
-      link: "/velki",
+      link: "/how-to-be-a-agent",
       imgSrc: img2,
     },
     {
       id: 3,
       title: "ভেল্কি সাইট",
-      link: "/velki",
+      link: "/ভেল্কি-সাইট",
       imgSrc: img3,
     },
   ];
@@ -36,19 +36,19 @@ const HomeCardSections = () => {
     {
       id: 1,
       title: "একাউন্ট খোলার নিয়ম বা শর্ত গুলো কি কি?",
-      link: "/questionanswer",
+      link: "/rules-and-regulation-for-open-account",
       imgSrc: img4,
     },
     {
       id: 2,
       title: "WINPBU তে কিভাবে লেনদেন করবেন?",
-      link: "/",
+      link: "/ভেল্কি-তে-কিভাবে-লেনদেন-ক",
       imgSrc: img5,
     },
     {
       id: 3,
       title: "কিভাবে একাউন্ট খুলবেন?",
-      link: "/",
+      link: "/কিভাবে-একাউন্ট-খুলবেন",
       imgSrc: img6,
     },
     {
@@ -94,7 +94,7 @@ const HomeCardSections = () => {
         {/* grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {arr2?.map((item) => (
-            <div className="relative w-full overflow-hidden cursor-pointer">
+            <Link to={item.link} className="relative w-full overflow-hidden cursor-pointer">
               <ImageBoxDesigner
                 imgSrc={item.imgSrc}
                 alt="Sub admin list"
@@ -113,7 +113,7 @@ const HomeCardSections = () => {
                 </Link>
               </div>
               <SocialShare className="absolute top-2 right-2" />
-            </div>
+            </Link>
           ))}
         </div>
 
