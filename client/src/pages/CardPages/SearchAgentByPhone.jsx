@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import image from '../../assets/telephone.png';
 import ImageBoxDesigner from '../../components/ImageBoxDesigner';
@@ -15,17 +15,12 @@ const SearchAgentByPhone = () => {
     const surgentlocation = location.pathname === '/suchagent'
     const bothignore = customerlocation || surgentlocation
     console.log(customerlocation)
-    const [complainAgentNumber, setComplainAgentNumber] = useState(null);
-    const complainRef = useRef();
 
-    const handleComplainClick = (agentNumber) => {
-        setComplainAgentNumber(agentNumber);
-        setTimeout(() => {
-            complainRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    };
+    
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
-    // Determine agentType based on route
     const getAgentTypeFromPath = (path) => {
         if (path.includes('/masteragentlist')) return 'Master';
         if (path.includes('/superagentlist')) return 'Supper';
@@ -67,7 +62,7 @@ const SearchAgentByPhone = () => {
         <div className="relative">
             <div className=" text-white  px-6 py-10 font-sans">
                 <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 ">
-                    <div className="">
+                    <div className="md:w-[75%] md:ml-5">
 
                         <div className="">
                             <div className="mb-20">
@@ -145,7 +140,7 @@ const SearchAgentByPhone = () => {
                     </div>
                     <div className="border-l border-dotted"></div>
 
-                    <div className="sticky top-20 h-fit self-start">
+                    <div className="sticky top-20 h-fit self-start md:w-[25%] ">
                         {/* Sidebar */}
 
                         <aside className=' w-[135%] md:w-full'>

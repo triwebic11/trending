@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import image from '../../assets/telephone.png';
 import NumberSearch from '../../components/NumberSearch';
@@ -12,15 +12,10 @@ const HowToBeAgent = () => {
     const surgentlocation = location.pathname === '/suchagent'
     const bothignore = customerlocation || surgentlocation
     console.log(customerlocation)
-    const [complainAgentNumber, setComplainAgentNumber] = useState(null);
-    const complainRef = useRef();
+        useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
-    const handleComplainClick = (agentNumber) => {
-        setComplainAgentNumber(agentNumber);
-        setTimeout(() => {
-            complainRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    };
 
     // Determine agentType based on route
     const getAgentTypeFromPath = (path) => {
@@ -30,6 +25,7 @@ const HowToBeAgent = () => {
         if (path.includes('/siteadminlist')) return 'Site_admin';
         return '';
     };
+
 
     const agentTypeFromPath = getAgentTypeFromPath(location.pathname);
 
@@ -56,9 +52,9 @@ const HowToBeAgent = () => {
     console.log('Agents data:', agents);
     return (
         <div className="relative">
-            <div className=" text-white  px-6 py-10 font-sans">
-                <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8 ">
-                    <div className="w-[75%]">
+            <div className=" text-white  py-10 font-sans">
+                <div className="max-w-6xl mx-auto   flex flex-col md:flex-row gap-8  ">
+                    <div className="md:w-[75%] ml-5">
 
                         <div className="">
                             <div className="mb-20">
@@ -179,7 +175,7 @@ const HowToBeAgent = () => {
                     </div>
                     <div className="border-l border-dotted"></div>
 
-                    <div className="sticky top-20 h-fit self-start w-[25%]">
+                    <div className="sticky top-20 h-fit self-start md:w-[25%]">
                         {/* Sidebar */}
 
                         <aside className=' w-[135%] md:w-full'>
