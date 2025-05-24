@@ -62,7 +62,7 @@ const ListComponant = ({ image, text }) => {
     },
   });
 
-  console.log('agentssssss', agents);
+  // console.log('agentssssss', agents);
   return (
     <div className="relative">
       <div className=" text-white  px-6 py-10 font-sans">
