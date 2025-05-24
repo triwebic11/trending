@@ -68,7 +68,7 @@ const HomeCardSections = () => {
         {/* grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
           {arr1?.map((item) => (
-            <div className="relative w-full  overflow-hidden cursor-pointer">
+            <Link to={item.link} className="relative w-full  overflow-hidden cursor-pointer">
               <ImageBoxDesigner
                 imgSrc={item.imgSrc}
                 alt="Sub admin list"
@@ -87,7 +87,7 @@ const HomeCardSections = () => {
                 </Link>
               </div>
               <SocialShare className="absolute top-2 right-2" />
-            </div>
+            </Link>
           ))}
         </div>
 

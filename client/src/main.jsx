@@ -54,6 +54,12 @@ const router = createBrowserRouter([
       { path: "/loading", element: <Loading /> },
       { path: "/velki", element: <Velki /> },
       { path: "/suchagent", element: <SuchAgent /> },
+      { path: "/search-agent-by-phone", element: <SuchAgent /> },
+      { path: "/how-to-be-a-agent", element: <SuchAgent /> },
+      { path: "/ভেল্কি-সাইট", element: <SuchAgent /> },
+      { path: "/rules-and-regulation-for-open-account", element: <SuchAgent /> },
+      { path: "/ভেল্কি-তে-কিভাবে-লেনদেন-ক", element: <SuchAgent /> },
+      { path: "/কিভাবে-একাউন্ট-খুলবেন", element: <SuchAgent /> },
 
       {
         path: "/howtoshare",
