@@ -24,7 +24,7 @@ const MasterAgentList = () => {
   const [searchData, setSearchData] = useState(null);
 
   const handleAgentSearch = (data) => {
-    console.log('Received from form:', data);
+   
     setSearchData(data);
   };
   //  const { agents, isLoading, error, refetch } = useAgents({ type: "Master" });
@@ -36,8 +36,8 @@ const MasterAgentList = () => {
       return res.data;
     },
   });
-  console.log("agentssssss master", agents);
-  console.log(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&uniqueId=${searchData?.agentId || ''}`)
+  
+  
  
   return (
     <div className="">

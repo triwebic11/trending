@@ -28,7 +28,7 @@ app.use("/api", agentRoutes);
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:5173", // React frontend
+    origin: ["https://win-pbu.com", "http://localhost:5173"], // React frontend
     methods: ["GET", "POST"],
   },
 });

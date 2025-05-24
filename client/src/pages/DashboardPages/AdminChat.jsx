@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://api.win-pbu.com", {
+  withCredentials: true,
+});
 
 function AdminChat({ currentUserId, targetUserId }) {
   const [messages, setMessages] = useState([]);
@@ -21,6 +23,21 @@ function AdminChat({ currentUserId, targetUserId }) {
       socket.off("receive_message");
     };
   }, [currentUserId, targetUserId]);
+
+  useEffect(() => {
+    // Fetch previous messages
+    const fetchMessages = async () => {
+      try {
+        const res = await axios.get("https://api.win-pbu.com/api/messages");
+        setMessages(res.data);
+        console.log("Ther are your message-", res);
+      } catch (err) {
+        console.error("Failed to fetch messages", err);
+      }
+    };
+
+    fetchMessages();
+  }, []);
 
   const sendMessage = () => {
     const messageData = {

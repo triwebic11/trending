@@ -1,21 +1,29 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { menuItems } from "./menuItems";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
 
-const handleClick = (e) => {
-  if (e.target.contains(ref.current)) {
-    setShow(!show);
-  }
-};
-
 const Navbar = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [show, setShow] = useState(false);
-  const ref = useRef();
+  const navbar = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // যদি show true থাকে এবং navbar div-এর বাইরে ক্লিক হয়
+      if (show && navbar.current && !navbar.current.contains(event.target)) {
+        setShow(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [show]);
 
   return (
     <div className="relative top-0">
@@ -67,7 +75,7 @@ const Navbar = () => {
         </div>
         {show && (
           <div
-            ref={(node) => (ref.current = node)}
+            ref={navbar}
             className="fixed w-2/3 h-screen top-0 right-0 md:hidden flex justify-start items-start bg-[#1D1B14] px-3 z-40 pl-10 pt-20"
           >
             <div
