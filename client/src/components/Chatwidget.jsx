@@ -4,19 +4,27 @@ import { RiMessage2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa6";
-import { MdEmojiEmotions } from "react-icons/md";
-import { MdOutlineAttachFile } from "react-icons/md";
-import { MdGif } from "react-icons/md";
 import ChatComponent from "./ChatComponent";
+
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(false);
   const [contact, setContact] = useState(false);
-  const msgbox = useRef(null);
+
+  // Refs for each box and the button
+  const mainBoxRef = useRef(null);
+  const messageBoxRef = useRef(null);
+  const contactBoxRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (open) {
+      if (
+        !mainBoxRef.current?.contains(event.target) &&
+        !messageBoxRef.current?.contains(event.target) &&
+        !contactBoxRef.current?.contains(event.target) &&
+        !buttonRef.current?.contains(event.target)
+      ) {
         setOpen(false);
         setMessage(false);
         setContact(false);
@@ -24,27 +32,30 @@ const ChatWidget = () => {
     }
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   return (
-    <div className="fixed bottom-[15%] right-[6%] z-50 ">
+    <div className="fixed bottom-[15%] right-[6%] z-50">
       <button
-        onClick={() => {
+        ref={buttonRef}
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent closing immediately
           setOpen(!open);
-          setMessage(null);
-          setContact(null);
+          setMessage(false);
+          setContact(false);
         }}
-        className="bg-purple-700 p-3 mt-2  rounded-full shadow-lg  items-center justify-center hover:bg-purple-800 transition"
+        className="bg-purple-700 p-3 mt-2 rounded-full shadow-lg items-center justify-center hover:bg-purple-800 transition"
       >
         <RiMessage2Fill className="text-white bg-green-600 text-xl cursor-pointer" />
       </button>
+
+      {/* Main Box */}
       {open && (
         <div
-          ref={msgbox}
+          ref={mainBoxRef}
           className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-white rounded-xl shadow-xl p-4 text-black"
         >
           <div className="bg-yellow-600 text-white rounded-t-xl p-6 py-20 flex flex-col gap-2">
@@ -62,7 +73,7 @@ const ChatWidget = () => {
             </button>
 
             <Link
-              href="https://www.proxy9wkts.com/"
+              to="https://www.proxy9wkts.com/"
               target="blank"
               className="bg-gray-100 hover:bg-fuchsia-100 hover:text-pink-600 px-4 py-2 rounded flex justify-between items-center cursor-pointer text-sm md:text-md"
             >
@@ -80,7 +91,7 @@ const ChatWidget = () => {
             </Link>
           </div>
 
-          <div className="flex justify-around border-t pt-2 text-sm ">
+          <div className="flex justify-around border-t pt-2 text-sm">
             <button
               onClick={() => setMessage(!message)}
               className="text-purple-700 text-lg cursor-pointer"
@@ -96,12 +107,14 @@ const ChatWidget = () => {
           </div>
         </div>
       )}
+
+      {/* Message Box */}
       {message && (
         <div
-          ref={msgbox}
-          className="fixed bottom-[22%] right-[6%]  h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10"
+          ref={messageBoxRef}
+          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl text-black p-10"
         >
-          <div className="text-center py-3  border-gray-200 border-b-[1px]">
+          <div className="text-center py-3 border-gray-200 border-b-[1px]">
             মেসেজ
           </div>
           <div className="h-[370px] flex flex-col justify-center items-center gap-8">
@@ -117,21 +130,23 @@ const ChatWidget = () => {
           <div className="flex justify-around border-t border-gray-600">
             <button
               onClick={() => setMessage(!message)}
-              className="text-purple-700 text-lg cursor-pointer "
+              className="text-purple-700 text-lg cursor-pointer"
             >
               হোম
             </button>
           </div>
         </div>
       )}
+
+      {/* Contact Box */}
       {contact && (
         <div
-          ref={msgbox}
-          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10 overflow-y-scroll"
+          ref={contactBoxRef}
+          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl text-black p-10 overflow-y-scroll"
         >
           <div
             onClick={() => setContact(!contact)}
-            className=" flex gap-2  absolute top-1 left-1 my-2"
+            className="flex gap-2 absolute top-1 left-1 my-2"
           >
             <FaAngleLeft className="text-4xl hover:bg-gray-200 p-2 rounded-2xl cursor-pointer" />
             <img src="chat.png" alt="chat" />
