@@ -3,6 +3,7 @@ import io from "socket.io-client";
 
 const socket = io("https://api.win-pbu.com", {
   withCredentials: true,
+  transports: ["websocket"],
 });
 
 function AdminChat({ currentUserId, targetUserId }) {

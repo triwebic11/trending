@@ -31,7 +31,7 @@ const ChatWidget = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-40 right-6 z-50 ">
+    <div className="fixed bottom-[15%] right-[6%] z-50 ">
       <button
         onClick={() => {
           setOpen(!open);
@@ -45,7 +45,7 @@ const ChatWidget = () => {
       {open && (
         <div
           ref={msgbox}
-          className="fixed top-4 lg:bottom-52 right-6 h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-white rounded-xl shadow-xl p-4 text-black"
+          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-white rounded-xl shadow-xl p-4 text-black"
         >
           <div className="bg-yellow-600 text-white rounded-t-xl p-6 py-20 flex flex-col gap-2">
             <div className="font-bold text-lg">হাই 👋</div>
@@ -99,7 +99,7 @@ const ChatWidget = () => {
       {message && (
         <div
           ref={msgbox}
-          className="fixed top-4 lg:bottom-52 right-6  h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10"
+          className="fixed bottom-[22%] right-[6%]  h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10"
         >
           <div className="text-center py-3  border-gray-200 border-b-[1px]">
             মেসেজ
@@ -127,7 +127,7 @@ const ChatWidget = () => {
       {contact && (
         <div
           ref={msgbox}
-          className="fixed top-4 right-6 h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10 overflow-y-scroll"
+          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-gray-50 rounded-xl shadow-xl  text-black p-10 overflow-y-scroll"
         >
           <div
             onClick={() => setContact(!contact)}

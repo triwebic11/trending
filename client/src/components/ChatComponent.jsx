@@ -5,9 +5,13 @@ import { MdEmojiEmotions } from "react-icons/md";
 import { MdOutlineAttachFile } from "react-icons/md";
 import { MdGif } from "react-icons/md";
 
-const socket = io("https://api.win-pbu.com");
+const socket = io("https://api.win-pbu.com", {
+  withCredentials: true,
+  transports: ["websocket"],
+});
 
 function ChatComponent({ currentUserId, targetUserId }) {
+  const [allMessage, setAllMessage] = useState([]);
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
@@ -31,7 +35,8 @@ function ChatComponent({ currentUserId, targetUserId }) {
     const fetchMessages = async () => {
       try {
         const res = await axios.get("https://api.win-pbu.com/api/messages");
-        setMessages(res.data);
+        setAllMessage(res.data);
+        console.log(allMessage);
         console.log("Ther are your message-", res);
       } catch (err) {
         console.error("Failed to fetch messages", err);
@@ -79,7 +84,7 @@ function ChatComponent({ currentUserId, targetUserId }) {
       </div>
 
       <div className="mt-4 flex gap-2">
-        <div className="fixed bottom-60 focus-visible:border-[1px] focus-visible:border-purple-600 rounded-lg border border-gray-300 inline-flex items-center px-1 gap-1 overflow-hidden">
+        <div className="w-[300px] md:w-[380px] fixed bottom-[24%] right-[8%] focus-visible:border-[1px] focus-visible:border-purple-600 rounded-lg border border-gray-300 inline-flex items-center px-1 gap-1 overflow-hidden">
           <input
             type="text"
             value={text}
@@ -91,11 +96,11 @@ function ChatComponent({ currentUserId, targetUserId }) {
               }
             }}
             placeholder="মেসেজ"
-            className="px-1 py-2 outline-none "
+            className="px-1 py-2 outline-none w-full inline-block"
           />
-          <MdEmojiEmotions className="hidden md:visible text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
-          <MdGif className="hidden md:visible text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
-          <MdOutlineAttachFile className="hidden md:visible text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
+          <MdEmojiEmotions className="hidden md:inline-block text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
+          <MdGif className="hidden md:inline-block text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
+          <MdOutlineAttachFile className="hidden md:inline-block text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
           <button
             onClick={sendMessage}
             className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-2 rounded-lg font-medium text-xl cursor pointer"
