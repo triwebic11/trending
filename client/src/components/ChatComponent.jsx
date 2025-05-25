@@ -18,28 +18,33 @@ function ChatComponent({ senderName }) {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
+  const userId = localStorage.getItem("userId"); // ✅ Get the current user's ID
+
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessages((prev) => [...prev, data]);
+      // ✅ Show message only if it's for this user
+      if (data.userId === userId || data.senderType === "user") {
+        setMessages((prev) => [...prev, data]);
+      }
     });
 
     return () => {
       socket.off("receive_message");
     };
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/messages/all`);
+        const res = await axios.get(`${API_URL}/api/messages/${userId}`); // ✅ User-specific messages
         setMessages(res.data);
       } catch (err) {
         console.error("Failed to fetch messages", err);
       }
     };
 
-    fetchMessages();
-  }, []);
+    if (userId) fetchMessages();
+  }, [userId]);
 
   const sendMessage = () => {
     if (!text.trim()) return;
@@ -47,6 +52,7 @@ function ChatComponent({ senderName }) {
       senderName: senderName,
       senderType: "user",
       message: text,
+      userId: userId, // ✅ Send with userId
     };
     socket.emit("send_message", messageData);
     setText("");

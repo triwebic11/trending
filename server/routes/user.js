@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// 🔐 Register Route
+// 🔐 Register
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
@@ -15,16 +15,17 @@ router.post("/register", async (req, res) => {
     }
 
     const hashed = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, password: hashed }); // role=user by default
+    const newUser = new User({ username, password: hashed });
     await newUser.save();
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Server error" });
   }
 });
 
-// 🔑 Login Route
+// 🔑 Login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -38,16 +39,14 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      }
+      { expiresIn: "7d" }
     );
 
     res.status(200).json({
       token,
-      userId: user._id,
+      userId: user.uniqueId,
       username: user.username,
-      role: user.role, // 👈 important for frontend
+      role: user.role
     });
   } catch (err) {
     res.status(500).json({ message: "Server error" });

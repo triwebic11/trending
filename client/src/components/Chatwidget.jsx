@@ -126,6 +126,7 @@ const ChatWidget = () => {
               আমাদের সাথে যোগাযোগ করুন
               <FaAngleRight className="text-lg ml-1" />
             </button>
+            <Link to="/register">Registraion to contact with admin</Link>
           </div>
           <div className="flex justify-around border-t border-gray-600">
             <button
@@ -151,7 +152,11 @@ const ChatWidget = () => {
             <FaAngleLeft className="text-4xl hover:bg-gray-200 p-2 rounded-2xl cursor-pointer" />
             <img src="chat.png" alt="chat" />
           </div>
-          <ChatComponent currentUserId="user1" targetUserId="admin" />
+
+          {/* ✅ Chat component with guest senderName */}
+          <ChatComponent
+            senderName={localStorage.getItem("senderName") || "Guest"}
+          />
         </div>
       )}
     </div>

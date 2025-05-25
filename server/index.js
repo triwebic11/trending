@@ -4,8 +4,10 @@ const http = require("http");
 const mongoose = require("mongoose");
 const socketIo = require("socket.io");
 const cors = require("cors");
-const authRoutes = require("./routes/auth");
+
 const agentRoutes = require("./routes/agentmanage");
+const messageRoutes = require("./routes/messages");
+const userRoutes = require("./routes/user"); // ✅ Updated, includes register + login
 const Message = require("./models/Message");
 
 const app = express();
@@ -17,29 +19,35 @@ app.use(
 );
 app.use(express.json());
 
+// ✅ MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Error:", err));
 
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error(err));
-
-app.use("/api", authRoutes);
+// ✅ Routes
 app.use("/api", agentRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/user", userRoutes); // ✅ Register + Login route from user.js
 
-// Server and Socket Setup
+app.get("/", (req, res) => {
+  res.send("Hello from cPanel Node.js app!");
+});
+
+// ✅ Server + Socket.io setup
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: ["https://win-pbu.com", "http://localhost:5173"], // React frontend
+    origin: ["https://win-pbu.com", "http://localhost:5173"],
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-// Socket.io Events
+// ✅ Socket.io events
 io.on("connection", (socket) => {
   console.log("⚡ User connected:", socket.id);
 
@@ -61,19 +69,8 @@ io.on("connection", (socket) => {
   });
 });
 
-// Routes
-const messageRoutes = require("./routes/messages");
-app.use("/api/messages", messageRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Hello from cPanel Node.js app!");
-});
-
-const userRoutes = require("./routes/user");
-app.use("/api/user", userRoutes);
-
-
-
-server.listen(5000, () => {
-  console.log("🚀 Server (with socket.io) running on port 5000");
+// ✅ Start the server
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });

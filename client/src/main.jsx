@@ -28,6 +28,8 @@ import VelkiSite from "./pages/CardPages/VelkiSite.jsx";
 import RulesAndRegulationForOpenAccount from "./pages/CardPages/RulesAndRegulationForOpenAccount.jsx";
 
 import HowToOpenAccount from "./pages/CardPages/HowToOpenAccount.jsx";
+import UserRegister from "./pages/user/UserRegister.jsx";
+import UserLogin from "./pages/user/UserLogin.jsx";
 
 const queryClient = new QueryClient();
 
@@ -79,9 +81,14 @@ const router = createBrowserRouter([
       { path: "*", element: <PageNotFound /> },
     ],
   },
-  { path: "/login", element: <LoginPage /> },
+  {
+    path: "/register",
+    element: <UserRegister />,
+  },
+  { path: "/login", element: <UserLogin /> },
+  { path: "/admin-login", element: <LoginPage /> },
   { path: "/dashboard", element: <Dashboard /> },
-  { path: "/register", element: <Register /> },
+  { path: "/admin-register", element: <Register /> },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

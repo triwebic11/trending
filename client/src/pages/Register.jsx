@@ -24,7 +24,7 @@ function Register() {
       );
       console.log(res.data);
       alert("Registration Successful!");
-      navigate("/login");
+      navigate("/admin-login");
     } catch (err) {
       console.error(err);
       alert("Registration failed");
