@@ -1,43 +1,38 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { FaAngleLeft } from "react-icons/fa6";
-import { MdEmojiEmotions } from "react-icons/md";
-import { MdOutlineAttachFile } from "react-icons/md";
-import { MdGif } from "react-icons/md";
+import axios from "axios";
+import { MdEmojiEmotions, MdOutlineAttachFile, MdGif } from "react-icons/md";
 
-const socket = io("https://api.win-pbu.com", {
+// 🌐 Auto-switch local/dev and live
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://api.win-pbu.com";
+
+const socket = io(API_URL, {
   withCredentials: true,
   transports: ["websocket"],
 });
 
-function ChatComponent({ currentUserId, targetUserId }) {
-  const [allMessage, setAllMessage] = useState([]);
+function ChatComponent({ senderName }) {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      if (
-        (data.senderId === currentUserId && data.receiverId === targetUserId) ||
-        (data.senderId === targetUserId && data.receiverId === currentUserId)
-      ) {
-        setMessages((prev) => [...prev, data]);
-      }
+      setMessages((prev) => [...prev, data]);
     });
 
     return () => {
       socket.off("receive_message");
     };
-  }, [currentUserId, targetUserId]);
+  }, []);
 
   useEffect(() => {
-    // Fetch previous messages
     const fetchMessages = async () => {
       try {
-        const res = await axios.get("https://api.win-pbu.com/api/messages");
-        setAllMessage(res.data);
-        console.log(allMessage);
-        console.log("Ther are your message-", res);
+        const res = await axios.get(`${API_URL}/api/messages/all`);
+        setMessages(res.data);
       } catch (err) {
         console.error("Failed to fetch messages", err);
       }
@@ -47,37 +42,37 @@ function ChatComponent({ currentUserId, targetUserId }) {
   }, []);
 
   const sendMessage = () => {
+    if (!text.trim()) return;
     const messageData = {
-      senderId: currentUserId,
-      receiverId: targetUserId,
-      content: text,
+      senderName: senderName,
+      senderType: "user",
+      message: text,
     };
     socket.emit("send_message", messageData);
-    setMessages((prev) => [...prev, messageData]);
     setText("");
   };
 
   return (
     <div>
-      <div className="h-full overflow-y-scroll  p-3 space-y-2 bg-gray-50">
+      <div className="h-full overflow-y-scroll p-3 space-y-2 bg-gray-50">
         {messages.map((msg, i) => (
           <div
             key={i}
             className={`flex ${
-              msg.senderId === currentUserId ? "justify-end" : "justify-start"
+              msg.senderType === "user" ? "justify-end" : "justify-start"
             }`}
           >
             <div
               className={`px-4 py-2 rounded-lg text-sm max-w-xs ${
-                msg.senderId === currentUserId
+                msg.senderType === "user"
                   ? "bg-blue-500 text-white"
                   : "bg-gray-300 text-gray-800"
               }`}
             >
               <span className="block font-medium mb-1">
-                {msg.senderId === currentUserId ? "You:" : "Admin:"}
+                {msg.senderType === "user" ? "You:" : "Admin:"}
               </span>
-              {msg.content}
+              {msg.message}
             </div>
           </div>
         ))}
@@ -91,7 +86,7 @@ function ChatComponent({ currentUserId, targetUserId }) {
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault(); // prevent newline
+                e.preventDefault();
                 sendMessage();
               }
             }}

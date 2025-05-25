@@ -1,15 +1,31 @@
 // routes/messages.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Message = require('../models/Message');
+const Message = require("../models/Message");
 
-// GET all messages
-router.get('/', async (req, res) => {
+// Save new message
+router.post("/send", async (req, res) => {
+  const { senderName, senderType, message } = req.body;
+
+  if (!senderName || !senderType || !message) {
+    return res.status(400).json({ success: false, message: "Missing fields" });
+  }
+
+  const newMsg = new Message({ senderName, senderType, message });
+  await newMsg.save();
+
+  res.status(200).json({ success: true, message: "Message saved." });
+});
+
+// Get all messages
+router.get("/all", async (req, res) => {
   try {
-    const messages = await Message.find().sort({ createdAt: 1 }); // oldest first
-    res.json(messages);
+    const messages = await Message.find().sort({ timestamp: 1 });
+    res.status(200).json(messages);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch messages' });
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to fetch messages" });
   }
 });
 

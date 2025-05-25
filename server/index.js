@@ -44,9 +44,16 @@ io.on("connection", (socket) => {
   console.log("⚡ User connected:", socket.id);
 
   socket.on("send_message", async (data) => {
-    const newMsg = new Message(data);
+    const { senderName, senderType, message } = data;
+
+    const newMsg = new Message({
+      senderName,
+      senderType,
+      message,
+    });
+
     await newMsg.save();
-    io.emit("receive_message", data);
+    io.emit("receive_message", newMsg);
   });
 
   socket.on("disconnect", () => {

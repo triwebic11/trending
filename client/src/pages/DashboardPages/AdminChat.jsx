@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import axios from "axios";
 
-const socket = io("https://api.win-pbu.com", {
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://api.win-pbu.com";
+
+const socket = io(API_URL, {
   withCredentials: true,
   transports: ["websocket"],
 });
 
-function AdminChat({ currentUserId, targetUserId }) {
+function AdminChat({ senderName }) {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      if (
-        (data.senderId === currentUserId && data.receiverId === targetUserId) ||
-        (data.senderId === targetUserId && data.receiverId === currentUserId)
-      ) {
-        setMessages((prev) => [...prev, data]);
-      }
+      setMessages((prev) => [...prev, data]);
     });
 
     return () => {
       socket.off("receive_message");
     };
-  }, [currentUserId, targetUserId]);
+  }, []);
 
   useEffect(() => {
-    // Fetch previous messages
     const fetchMessages = async () => {
       try {
-        const res = await axios.get("https://api.win-pbu.com/api/messages");
+        const res = await axios.get(`${API_URL}/api/messages/all`);
         setMessages(res.data);
-        console.log("Ther are your message-", res);
       } catch (err) {
         console.error("Failed to fetch messages", err);
       }
@@ -41,41 +40,41 @@ function AdminChat({ currentUserId, targetUserId }) {
   }, []);
 
   const sendMessage = () => {
+    if (!text.trim()) return;
     const messageData = {
-      senderId: currentUserId,
-      receiverId: targetUserId,
-      content: text,
+      senderName: senderName,
+      senderType: "admin",
+      message: text,
     };
     socket.emit("send_message", messageData);
-    setMessages((prev) => [...prev, messageData]);
     setText("");
   };
 
   return (
-    <div className=" text-black max-w-screen-lg mx-auto my-20">
+    <div className="text-black max-w-screen-lg mx-auto my-20">
       <h3 className="text-xl font-semibold mb-3 text-center text-white">
         Chat with user
       </h3>
 
-      <div className="h-[70%] overflow-y-scroll border rounded-lg p-3 space-y-2 bg- ">
+      <div className="h-[70%] overflow-y-scroll border rounded-lg p-3 space-y-2 bg-white">
         {messages.map((msg, i) => (
           <div
             key={i}
             className={`flex ${
-              msg.senderId === currentUserId ? "justify-end" : "justify-start"
+              msg.senderType === "admin" ? "justify-end" : "justify-start"
             }`}
           >
             <div
               className={`px-4 py-2 rounded-lg text-sm max-w-xs ${
-                msg.senderId === currentUserId
+                msg.senderType === "admin"
                   ? "bg-blue-500 text-white"
                   : "bg-gray-300 text-gray-800"
               }`}
             >
               <span className="block font-medium mb-1">
-                {msg.senderId === currentUserId ? "You" : "User :"}
+                {msg.senderType === "admin" ? "You" : "User:"}
               </span>
-              {msg.content}
+              {msg.message}
             </div>
           </div>
         ))}
@@ -88,12 +87,12 @@ function AdminChat({ currentUserId, targetUserId }) {
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault(); // prevent newline
+              e.preventDefault();
               sendMessage();
             }
           }}
           placeholder="Type a message"
-          className="flex-1 px-4 py-2 text-white rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 px-4 py-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
         <button
           onClick={sendMessage}
