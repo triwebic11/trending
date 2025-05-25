@@ -69,6 +69,11 @@ app.get("/", (req, res) => {
   res.send("Hello from cPanel Node.js app!");
 });
 
+const userRoutes = require("./routes/user");
+app.use("/api/user", userRoutes);
+
+
+
 server.listen(5000, () => {
   console.log("🚀 Server (with socket.io) running on port 5000");
 });

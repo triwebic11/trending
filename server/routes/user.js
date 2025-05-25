@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// ✅ Register Route
+// 🔐 Register Route
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
@@ -20,12 +20,11 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
-    console.error("Register Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
 
-// ✅ Login Route
+// 🔑 Login Route
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -51,7 +50,6 @@ router.post("/login", async (req, res) => {
       role: user.role, // 👈 important for frontend
     });
   } catch (err) {
-    console.error("Login Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
