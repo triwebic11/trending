@@ -122,10 +122,10 @@ const ListComponant = ({ image, text }) => {
                           </tr>
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border border-white p-2 text-green-400 flex items-center gap-2">
+                            <td className="border border-white p-2  hover:text-[#ff7c7c] flex items-center gap-2">
                               <FaWhatsapp />
-                              <a href="https://wa.me/855963750436" target="_blank" rel="noopener noreferrer">
-                                +855963750436
+                              <a href="https://wa.me/1772517065" target="_blank" rel="noopener noreferrer">
+                                +880 1772-517065
                               </a>
                             </td>
                           </tr>
@@ -148,10 +148,10 @@ const ListComponant = ({ image, text }) => {
                           </tr>
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border border-white p-2 text-green-400 flex items-center gap-2">
+                            <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
                               <FaWhatsapp />
-                              <a href="https://wa.me/60172774046" target="_blank" rel="noopener noreferrer">
-                                +60172774046
+                              <a href="https://wa.me/855314271525" target="_blank" rel="noopener noreferrer">
+                                +855 31 427 1525
                               </a>
                             </td>
                           </tr>
@@ -162,16 +162,16 @@ const ListComponant = ({ image, text }) => {
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 space-y-1">
-                              <div className="flex items-center gap-2 text-green-400">
+                              <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
                                 <FaWhatsapp />
-                                <a href="https://wa.me/855969477041" target="_blank" rel="noopener noreferrer">
-                                  +855969477041
+                                <a href="https://wa.me/971562076946" target="_blank" rel="noopener noreferrer">
+                                  +971 56 207 6946
                                 </a>
                               </div>
-                              <div className="flex items-center gap-2 text-green-400">
+                              <div className="flex items-center gap-2 hover:text-[#ff7c7c] ">
                                 <FaWhatsapp />
-                                <a href="https://wa.me/855969332241" target="_blank" rel="noopener noreferrer">
-                                  +855969332241
+                                <a href="https://wa.me/1772517065" target="_blank" rel="noopener noreferrer">
+                                  +880 1772-517065
                                 </a>
                               </div>
                             </td>
