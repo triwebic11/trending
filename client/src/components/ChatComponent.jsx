@@ -3,41 +3,51 @@ import io from "socket.io-client";
 import axios from "axios";
 import { MdEmojiEmotions, MdOutlineAttachFile, MdGif } from "react-icons/md";
 
-// 🌐 Auto-switch local/dev and live
+// ✅ API URL
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://api.win-pbu.com";
 
+// ✅ Socket init
 const socket = io(API_URL, {
   withCredentials: true,
   transports: ["websocket"],
 });
 
-function ChatComponent({ senderName }) {
+// ✅ Generate random ID function
+const generateRandomId = () => {
+  return "user-" + Math.random().toString(36).substr(2, 9);
+};
+
+function ChatComponent({ senderName = "Anonymous" }) {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
-  const userId = localStorage.getItem("userId"); // ✅ Get the current user's ID
+  // ✅ Get or set userId from localStorage
+// ✅ Always generate new userId on each page load
+const [userId] = useState(() => generateRandomId());
 
+
+  // ✅ Receive messages
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      // ✅ Show message only if it's for this user
+    const handleReceiveMessage = (data) => {
       if (data.userId === userId || data.senderType === "user") {
         setMessages((prev) => [...prev, data]);
       }
-    });
-
-    return () => {
-      socket.off("receive_message");
     };
+
+    socket.on("receive_message", handleReceiveMessage);
+    return () => socket.off("receive_message", handleReceiveMessage);
   }, [userId]);
 
+  // ✅ Load existing messages
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/messages/${userId}`); // ✅ User-specific messages
+        const res = await axios.get(`${API_URL}/api/messages/${userId}`);
         setMessages(res.data);
+        console.log("Messages loaded:", res.data);
       } catch (err) {
         console.error("Failed to fetch messages", err);
       }
@@ -46,20 +56,25 @@ function ChatComponent({ senderName }) {
     if (userId) fetchMessages();
   }, [userId]);
 
+  // ✅ Send message
   const sendMessage = () => {
     if (!text.trim()) return;
+
     const messageData = {
-      senderName: senderName,
+      senderName,
       senderType: "user",
       message: text,
-      userId: userId, // ✅ Send with userId
+      userId,
     };
+
     socket.emit("send_message", messageData);
     setText("");
+    console.log("Message sent:", messageData);
   };
 
   return (
     <div>
+      {/* Chat area */}
       <div className="h-full overflow-y-scroll p-3 space-y-2 bg-gray-50">
         {messages.map((msg, i) => (
           <div
@@ -84,6 +99,7 @@ function ChatComponent({ senderName }) {
         ))}
       </div>
 
+      {/* Input section */}
       <div className="mt-4 flex gap-2">
         <div className="w-[300px] md:w-[380px] fixed bottom-[24%] right-[8%] focus-visible:border-[1px] focus-visible:border-purple-600 rounded-lg border border-gray-300 inline-flex items-center px-1 gap-1 overflow-hidden">
           <input
@@ -104,7 +120,7 @@ function ChatComponent({ senderName }) {
           <MdOutlineAttachFile className="hidden md:inline-block text-gray-600 text-xl hover:text-gray-700 cursor-pointer" />
           <button
             onClick={sendMessage}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-2 rounded-lg font-medium text-xl cursor pointer"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-2 rounded-lg font-medium text-xl cursor-pointer"
           >
             ^
           </button>

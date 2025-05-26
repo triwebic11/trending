@@ -25,7 +25,7 @@ const Dashboard = () => {
       <div className="flex">
         {/* Sidebar */}
         <div
-          className={`md:w-[20%] w-[60px] fixed top-0 md:left-0 left-2  z-50 bg-[#1e1e1e] text-white px-4 md:border-r md:border-gray-500 md:h-screen`}
+          className={`md:w-[20%] w-[60px] fixed top-0 md:left-0 left-2  z-50 bg-[#111111] text-white px-4 md:border-r md:border-gray-500 md:h-screen`}
         >
           <div className="relative top-0">
             <div className="text-white py-6">
@@ -104,7 +104,7 @@ const Dashboard = () => {
         </div>
 
         {/* Main Content Section */}
-        <div className="md:ml-[20%] w-full bg-[#1e1e1e] min-h-screen transition-all duration-300">
+        <div className="md:ml-[20%] w-full bg-[#111111] min-h-screen transition-all duration-300">
           {/* Main content render area */}
           <Outlet />
 
