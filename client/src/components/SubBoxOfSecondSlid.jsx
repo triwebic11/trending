@@ -13,7 +13,7 @@ const SubBoxOfSecondSlid = ({ link, title }) => {
       </div>
       <div className="-mt-5">
         <Link to={link}>
-          <span className="text-5xl font-bold text-white cursor-pointer text-shadow-lg text-shadow-black relative overflow-hidden inline-flex group">
+          <span className="md:text-5xl text-4xl font-bold text-white cursor-pointer text-shadow-lg text-shadow-black relative overflow-hidden inline-flex group">
             {title}
             <span className="absolute w-full h-[5px] bg-white left-0 bottom-0 -translate-x-full group-hover:translate-x-0 transform transition-transform duration-500" />
           </span>

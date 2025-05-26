@@ -4,6 +4,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+
+// ✅ Get all users (excluding password & __v)
+router.get("/all", async (req, res) => {
+  const result = await User.find().toArray();
+  res.send(result);
+});
 // 🔐 Register
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -52,5 +58,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+
 
 module.exports = router;

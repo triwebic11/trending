@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: ["https://win-pbu.com", "http://localhost:5173"],
+    origin: ["https://win-pbu.com", "http://localhost:5173","https://api.win-pbu.com"],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -52,17 +52,19 @@ io.on("connection", (socket) => {
   console.log("⚡ User connected:", socket.id);
 
   socket.on("send_message", async (data) => {
-    const { senderName, senderType, message } = data;
+  const { senderName, senderType, message, userId } = data; // ✅ userId destructured
 
-    const newMsg = new Message({
-      senderName,
-      senderType,
-      message,
-    });
-
-    await newMsg.save();
-    io.emit("receive_message", newMsg);
+  const newMsg = new Message({
+    senderName,
+    senderType,
+    message,
+    userId, // ✅ Save userId too
   });
+
+  await newMsg.save();
+  io.emit("receive_message", newMsg); // Emit newly saved message (includes _id, timestamp)
+});
+
 
   socket.on("disconnect", () => {
     console.log("⚠️ User disconnected:", socket.id);

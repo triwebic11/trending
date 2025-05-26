@@ -1,14 +1,17 @@
-// models/Message.js
 const mongoose = require("mongoose");
 
-const MessageSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema({
   senderName: String,
-  senderType: String, // 'user' or 'admin'
+  senderType: String,
   message: String,
+ userId: {
+    type: String, // changed from ObjectId to String
+    required: true,
+  },
   timestamp: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
 });
 
-module.exports = mongoose.model("Message", MessageSchema);
+module.exports = mongoose.model("Message", messageSchema);
