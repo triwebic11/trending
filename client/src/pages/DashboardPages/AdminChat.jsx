@@ -123,7 +123,7 @@ function AdminDashboard() {
           ))}
         </div>
 
-        {selectedUser && (
+        {selectedUser || (
           <div className="mt-4 flex gap-2">
             <input
               type="text"

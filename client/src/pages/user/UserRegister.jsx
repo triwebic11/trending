@@ -12,7 +12,7 @@ function UserRegister() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/user/register", formData);
+      await axios.post("https://api.win-pbu.com/api/user/login", formData);
 
       alert("Registration successful!");
       navigate("/login");
