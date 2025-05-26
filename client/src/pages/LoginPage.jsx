@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let adminEmail = "adminwinpbu@gmail.com";
+  let adminPassword = "@#adminwinpbu#@";
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await axios.post("https://api.win-pbu.com/api/login", form);
-    localStorage.setItem("token", res.data.token);
-    navigate("/dashboard");
+    if (form.email == adminEmail && form.password == adminPassword) {
+      alert(
+        "Login successful! You are now an admin. Click OK to go to the dashboard."
+      );
+      navigate("/dashboard");
+    } else {
+      alert("Invalid email or password. Please try again.");
+    }
   };
 
   return (
