@@ -19,34 +19,44 @@ function AdminDashboard() {
   const [text, setText] = useState("");
   const [unreadCounts, setUnreadCounts] = useState({});
 
-  // Load all messages and group users
+  // Load all messages and group users with unread count
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`https://api.win-pbu.com/api/messages/all`);
+        const res = await axios.get(`${API_URL}/api/messages/all`);
         const messages = res.data;
 
         const userMap = {};
+        const unreadMap = {};
 
         messages.forEach((msg) => {
           if (!msg.userId) return;
 
-          const existing = userMap[msg.userId];
-          if (!existing || new Date(msg.createdAt) > new Date(existing.lastTime)) {
+          // Last message
+          if (
+            !userMap[msg.userId] ||
+            new Date(msg.createdAt) > new Date(userMap[msg.userId].lastTime)
+          ) {
             userMap[msg.userId] = {
               _id: msg.userId,
               userId: msg.userId,
-              lastTime: msg.createdAt,
               lastMessage: msg.message,
+              lastTime: msg.createdAt,
             };
+          }
+
+          // Count unread messages (from users only)
+          if (msg.senderType === "user") {
+            unreadMap[msg.userId] = (unreadMap[msg.userId] || 0) + 1;
           }
         });
 
-        const sortedUsers = Object.values(userMap).sort(
+        const userList = Object.values(userMap).sort(
           (a, b) => new Date(b.lastTime) - new Date(a.lastTime)
         );
 
-        setUsers(sortedUsers);
+        setUsers(userList);
+        setUnreadCounts(unreadMap);
       } catch (err) {
         console.error("Failed to load users", err);
       }
@@ -55,7 +65,7 @@ function AdminDashboard() {
     fetchUsers();
   }, []);
 
-  // Socket listener
+  // Socket listener for incoming messages
   useEffect(() => {
     const handleReceiveMessage = (data) => {
       if (data.senderType !== "admin") {
@@ -68,9 +78,7 @@ function AdminDashboard() {
           }));
         }
 
-        // Move sender to top
         setUsers((prevUsers) => {
-          const userExists = prevUsers.find((u) => u._id === data.userId);
           const updatedUser = {
             _id: data.userId,
             userId: data.userId,
@@ -78,6 +86,7 @@ function AdminDashboard() {
             lastTime: data.createdAt || new Date().toISOString(),
           };
 
+          const userExists = prevUsers.find((u) => u._id === data.userId);
           const updatedUsers = userExists
             ? prevUsers.map((u) => (u._id === data.userId ? updatedUser : u))
             : [...prevUsers, updatedUser];
@@ -100,7 +109,15 @@ function AdminDashboard() {
     } catch (err) {
       console.error("Failed to load messages", err);
     }
+
+    
   };
+
+  useEffect(() => {
+  if (selectedUser?._id) {
+    loadMessages(selectedUser._id);
+  }
+}, [selectedUser]);
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
@@ -123,15 +140,20 @@ function AdminDashboard() {
     };
 
     try {
-      await axios.post(`${API_URL}/api/messages/send`, messageData);
-      setMessages((prev) => [...prev, { ...messageData, createdAt: new Date().toISOString() }]);
+      const res = await axios.post(`${API_URL}/api/messages/send`, messageData);
+      const savedMessage = res.data;
+
+      setMessages((prev) => [...prev, savedMessage]);
       setText("");
 
-      // Update sidebar user list
       setUsers((prevUsers) => {
         const updatedUsers = prevUsers.map((u) =>
           u._id === selectedUser._id
-            ? { ...u, lastMessage: text, lastTime: new Date().toISOString() }
+            ? {
+                ...u,
+                lastMessage: savedMessage.message,
+                lastTime: savedMessage.createdAt,
+              }
             : u
         );
         return updatedUsers.sort(
@@ -139,16 +161,16 @@ function AdminDashboard() {
         );
       });
     } catch (err) {
-      console.error("Message send failed", err);
+      console.error("Message send failed:", err.response?.data || err.message);
     }
   };
 
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="w-1/4 border-r p-4 overflow-y-auto bg-[#111111]">
-        <h2 className="text-lg font-bold mb-4 bg-[#111111]">Users</h2>
-        {users?.map((user) => {
+      <div className="w-1/4 border-r p-4 overflow-y-auto text-white">
+        <h2 className="text-lg font-bold mb-4 text-white">Users</h2>
+        {users.map((user) => {
           const count = unreadCounts[user._id] || 0;
           return (
             <div
@@ -157,10 +179,10 @@ function AdminDashboard() {
               className={`cursor-pointer p-2 rounded mb-2 flex justify-between items-center ${
                 selectedUser?._id === user._id
                   ? "bg-blue-200 text-black"
-                  : "hover:bg-gray-200 hover:text-black"
+                  : "hover:bg-gray-200 text-white"
               }`}
             >
-              <span className="font-semibold text-sm text-white hover:text-black">{user.userId}</span>
+              <span className="font-semibold text-sm">{user.userId}</span>
               {count > 0 && (
                 <span className="ml-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                   {count}
@@ -172,12 +194,14 @@ function AdminDashboard() {
       </div>
 
       {/* Chat Area */}
-      <div className="flex-1 p-4 flex flex-col bg-[#111111]">
-        <h2 className="text-lg font-bold mb-4 text-white">
-          {selectedUser ? `Chatting with - ${selectedUser.userId}` : "Select a user"}
+      <div className="flex-1 p-4 flex flex-col">
+        <h2 className="text-lg font-bold mb-4 text-amber-500">
+          {selectedUser
+            ? `Chatting with ${selectedUser.userId}`
+            : "Select a user"}
         </h2>
 
-        <div className="flex-1 overflow-y-auto border rounded p-4 bg-[#111111] border-gray-300">
+        <div className="flex-1 overflow-y-auto border rounded p-4 border-gray-400">
           {messages.map((msg, i) => (
             <div
               key={i}
@@ -211,7 +235,7 @@ function AdminDashboard() {
                 if (e.key === "Enter") sendMessage();
               }}
               placeholder="Type a message"
-              className="flex-1 px-4 py-2 border rounded border-gray-300 text-white"
+              className="flex-1 px-4 py-2 text-white border-gray-400 border rounded"
             />
             <button
               onClick={sendMessage}

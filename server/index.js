@@ -13,7 +13,7 @@ const Message = require("./models/Message");
 const app = express();
 app.use(
   cors({
-    origin: ["https://win-pbu.com", "http://localhost:5173"],
+    origin: ["https://win-pbu.com", "http://localhost:5173","https://api.win-pbu.com","http://localhost:5000"],
     credentials: true,
   })
 );
@@ -47,29 +47,34 @@ const io = socketIo(server, {
   },
 });
 
-// ✅ Socket.io events
+// Attach io instance to Express app to use in routes
+app.set("io", io);
+
 io.on("connection", (socket) => {
   console.log("⚡ User connected:", socket.id);
 
   socket.on("send_message", async (data) => {
-  const { senderName, senderType, message, userId } = data; // ✅ userId destructured
+    const { senderName, senderType, message, userId } = data;
 
-  const newMsg = new Message({
-    senderName,
-    senderType,
-    message,
-    userId, // ✅ Save userId too
+    const newMsg = new Message({
+      senderName,
+      senderType,
+      message,
+      userId,
+    });
+
+    await newMsg.save();
+    io.emit("receive_message", newMsg);
   });
-
-  await newMsg.save();
-  io.emit("receive_message", newMsg); // Emit newly saved message (includes _id, timestamp)
-});
-
 
   socket.on("disconnect", () => {
     console.log("⚠️ User disconnected:", socket.id);
   });
 });
+
+
+ 
+
 
 // ✅ Start the server
 const PORT = process.env.PORT || 5000;

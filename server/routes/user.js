@@ -7,9 +7,14 @@ const User = require("../models/User");
 
 // ✅ Get all users (excluding password & __v)
 router.get("/all", async (req, res) => {
-  const result = await User.find().toArray();
-  res.send(result);
+  try {
+    const result = await User.find(); // No .toArray() needed
+    res.send(result);
+  } catch (err) {
+    res.status(500).send({ error: "Failed to fetch users" });
+  }
 });
+
 // 🔐 Register
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;

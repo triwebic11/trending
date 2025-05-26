@@ -126,7 +126,7 @@ const ChatWidget = () => {
               আমাদের সাথে যোগাযোগ করুন
               <FaAngleRight className="text-lg ml-1" />
             </button>
-            <Link to="/register">Registraion to contact with admin</Link>
+            {/* <Link to="/register">Registraion to contact with admin</Link> */}
           </div>
           <div className="flex justify-around border-t border-gray-600">
             <button
