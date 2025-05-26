@@ -12,7 +12,7 @@ const NumberSearch = ({ onSearch }) => {
   return (
     <div className="flex flex-col items-center justify-center text-white px-4 py-10">
       <h2 className="text-center text-lg font-semibold mb-2">
-        এজেন্ট এর আইডি নাম্বার দিয়ে খুঁজুন:
+        এজেন্ট কে ফোন নাম্বার দিয়ে খুজুনঃ
       </h2>
       <form 
         onSubmit={handleSubmit} 
@@ -25,8 +25,7 @@ const NumberSearch = ({ onSearch }) => {
             type="text"
             value={agentNumber}
             onChange={(e) => setAgentNumber(e.target.value)}
-            className="w-full px-3 py-3 bg-[#1e1e1e] border border-white rounded text-white"
-            placeholder="Enter Agent ID"
+            className="w-full px-3 py-4 bg-[#1e1e1e] border border-white rounded text-white"
             required
           />
         </div>
@@ -34,7 +33,7 @@ const NumberSearch = ({ onSearch }) => {
         <div>
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded"
+            className="bg-[#4caf50] hover:bg-green-700 text-white font-semibold px-6 py-2 rounded"
           >
             Submit
           </button>

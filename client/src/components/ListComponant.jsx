@@ -14,6 +14,7 @@ const ListComponant = ({ image, text }) => {
 
   const customerlocation = location.pathname === '/customerservics'
   const surgentlocation = location.pathname === '/suchagent'
+  const customerserveice = location.pathname === '/customerservics'
   const bothignore = customerlocation || surgentlocation
   console.log(customerlocation)
   const [complainAgentNumber, setComplainAgentNumber] = useState(null);
@@ -101,13 +102,15 @@ const ListComponant = ({ image, text }) => {
 
                 {complainAgentNumber && (
                   <div ref={complainRef} className="text-white p-4 space-y-6">
+                    <h1 className='hover:text-[#ff7c7c] text-xl text-center'><a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">লটারী! লটারী!! লটারী!!!!!...</a></h1>
+                    <h1 className='hover:text-[#ff7c7c] text-xl text-center'><a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">আপনি যদি ভেল্কির ইউজার হয়ে থাকেন তাহলে ফ্রীতে লটারী তে জয়েন করুন...</a></h1>
                     <h2 className="text-center text-xl font-bold border-b pb-2">
                       উনি ভেল্কির একজন অনলাইন সুপার এজেন্ট নাম্বার <span className="text-green-400">{complainAgentNumber}</span>
                     </h2>
 
                     {/* Super Agent Info */}
                     <div className=" rounded-md p-4">
-                      <table className="table-auto w-full border-collapse border border-white text-left">
+                      <table className="table-auto font-semibold text-center w-full border-collapse border border-white text-left">
                         <thead>
                           <tr>
                             <th colSpan="2" className="border border-white p-2 font-bold text-center ">
@@ -117,17 +120,14 @@ const ListComponant = ({ image, text }) => {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-white p-2 font-bold">উনার সুপার এজেন্ট আইডিঃ</td>
-                            <td className="border border-white p-2">{complainAgentNumber}</td>
+                            <td className="border border-white p-2 font-bold"> উনি যে সব সাইটের মাষ্টার এজেন্টঃ</td>
+                            <td className="border text-center border-white p-2">VELKI ✅<br />
+ভেল্কি সাইটের লিংক গুলোঃ</td>
                           </tr>
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border border-white p-2  hover:text-[#ff7c7c] flex items-center gap-2">
-                              <FaWhatsapp />
-                              <a href="https://wa.me/1772517065" target="_blank" rel="noopener noreferrer">
-                                +880 1772-517065
-                              </a>
-                            </td>
+                            <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]"><FaWhatsapp className='text-3xl text-green-500' /><p>{complainAgentNumber}</p></td>
+                            
                           </tr>
                         </tbody>
                       </table>
@@ -142,38 +142,27 @@ const ListComponant = ({ image, text }) => {
 
                       <table className="table-auto w-full border-collapse border border-white text-left">
                         <tbody>
-                          <tr>
-                            <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর এডমিন আইডিঃ</td>
-                            <td className="border border-white p-2">g</td>
-                          </tr>
+                        
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
                               <FaWhatsapp />
-                              <a href="https://wa.me/855314271525" target="_blank" rel="noopener noreferrer">
-                                +855 31 427 1525
+                              <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
+                                +60146411920 
                               </a>
                             </td>
                           </tr>
-                          <tr>
-                            <td className="border border-white p-2 font-bold">উনার এডমিন এর এডমিন আইডিঃ</td>
-                            <td className="border border-white p-2">Akash Malik</td>
-                          </tr>
+                        
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 space-y-1">
                               <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
                                 <FaWhatsapp />
-                                <a href="https://wa.me/971562076946" target="_blank" rel="noopener noreferrer">
-                                  +971 56 207 6946
+                                <a href="https://wa.me/601116085213" target="_blank" rel="noopener noreferrer">
+                                  +60 11-1608 5213
                                 </a>
                               </div>
-                              <div className="flex items-center gap-2 hover:text-[#ff7c7c] ">
-                                <FaWhatsapp />
-                                <a href="https://wa.me/1772517065" target="_blank" rel="noopener noreferrer">
-                                  +880 1772-517065
-                                </a>
-                              </div>
+                              
                             </td>
                           </tr>
                         </tbody>
@@ -185,10 +174,10 @@ const ListComponant = ({ image, text }) => {
                 <div>
                   <h4 className="text-bold mt-3 flex gap-2 font-semibold"> <span className="border-l border-4 border-white"></span>
                     {
-                      customerlocation ? <p>**প্রতারনার হাত থেকে বাচতে সবার আগে ভিজিট করুন বাজিওয়ালার সাইটঃ https://winpbu.com **কাস্টমার সার্ভিসের কাউকেই আপনি আপনার একাউন্টের পাসোয়ার্ড দিবেন না।</p> : <div>
+                      customerlocation ? <p>**প্রতারনার হাত থেকে বাচতে সবার আগে ভিজিট করুন বাজিওয়ালার সাইটঃ https://win-pbu.com **কাস্টমার সার্ভিসের কাউকেই আপনি আপনার একাউন্টের পাসোয়ার্ড দিবেন না।</p> : <div>
                         <p>এজেন্ট দের সাথে লেনদেন এর আগে WINPBU এর নিয়ম গুলো জেনে নিন!!</p>
                         <br></br>
-                        <p>**প্রতারনার হাত থেকে বাচতে সবার আগে ভিজিট করুন WINPBU.COM **হোয়াটসঅ্যাপ ব্যাতিত অন্য কোন এপ এর মাধ্যমে যোগাযোগ বা লেনদেন করা যাবে না এবং করলে তা গ্রহনযোগ্য হবে না। **এজেন্ট পাসোয়ার্ড পরিবর্তন করে দিলে – আপনি একাউন্টে ঢুকে আবার পাসোয়ার্ড পরিবর্তন করে নিবেন। এজেন্ট যাতে কোন ভাবেই আপনার পাসোয়ার্ড না জানে। আপনার পাসোয়ার্ড আপনি কাউকেই দিবেন না – সে যেই হউক না কেন। **সকাল ৯ঃ৪৫ এর আগে এবং রাত ৯ঃ৪৫ এর পরে কোন ইউজার যদি এজেন্ট কে টাকা পাঠায় – অই টাকার দায়ভার WINPBU নিবে না। **প্রতিবার এজেন্ট এর কাছ থেকে পয়েন্ট নেবার আগে – এজেন্ট এর কাছে লেনদেন এর তথ্য জেনে নিতে হবে। যেহেতু এজেন্ট এক এক সময় এক ভাবে লেনদেন করে সেহেতু এই তথ্য জানা জরুরী। **এজেন্ট এর বিরুদ্ধে কোন অভিযোগ থাকলে এজেন্ট এর নামের শেষে অভিযোগ বাটন এ ক্লিক করলে যে হোয়াটসঅ্যাপ নাম্বার আসবে – তাকে অভিযোগ করতে হবে।</p>
+                        <p>**প্রতারনার হাত থেকে বাচতে সবার আগে ভিজিট করুন WIN-PBU.COM **হোয়াটসঅ্যাপ ব্যাতিত অন্য কোন এপ এর মাধ্যমে যোগাযোগ বা লেনদেন করা যাবে না এবং করলে তা গ্রহনযোগ্য হবে না। **এজেন্ট পাসোয়ার্ড পরিবর্তন করে দিলে – আপনি একাউন্টে ঢুকে আবার পাসোয়ার্ড পরিবর্তন করে নিবেন। এজেন্ট যাতে কোন ভাবেই আপনার পাসোয়ার্ড না জানে। আপনার পাসোয়ার্ড আপনি কাউকেই দিবেন না – সে যেই হউক না কেন। **সকাল ৯ঃ৪৫ এর আগে এবং রাত ৯ঃ৪৫ এর পরে কোন ইউজার যদি এজেন্ট কে টাকা পাঠায় – অই টাকার দায়ভার WINPBU নিবে না। **প্রতিবার এজেন্ট এর কাছ থেকে পয়েন্ট নেবার আগে – এজেন্ট এর কাছে লেনদেন এর তথ্য জেনে নিতে হবে। যেহেতু এজেন্ট এক এক সময় এক ভাবে লেনদেন করে সেহেতু এই তথ্য জানা জরুরী। **এজেন্ট এর বিরুদ্ধে কোন অভিযোগ থাকলে এজেন্ট এর নামের শেষে অভিযোগ বাটন এ ক্লিক করলে যে হোয়াটসঅ্যাপ নাম্বার আসবে – তাকে অভিযোগ করতে হবে।</p>
                       </div>
                     }
 
@@ -205,8 +194,82 @@ const ListComponant = ({ image, text }) => {
                   surgentlocation && <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
                 }
 
+                {
+                  customerserveice ? <>
+
+                    <div className="w-full my-4">
+                      <table className="w-full border-collapse border font-bold border-white text-white text-center text-base leading-snug">
+                        <thead>
+                          <tr>
+                            <th className="border border-white px-1 py-2 whitespace-nowrap">ID NO</th>
+                            <th className="border border-white px-1 py-2 whitespace-nowrap">TYPE</th>
+                            <th className="border border-white px-1 py-2 whitespace-pre-wrap">WHTS</th>
+                            <th className="border border-white px-1 py-2 whitespace-pre-wrap">PHONE NUMBER</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr>
+                              <td className="border border-white px-1 py-2">02</td>
+                              <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
+                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                                <a
+                                  href={`https://wa.me/+971562076946`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                                >
+                                   <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
+                                </a>
+                                
+                              </td>
+                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                                <a
+                                  href={`https://wa.me/+971562076946`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                                >
+                                   +971 56 207 6946
+                                </a>
+                              </td>
+                              
+                            </tr>
+                            <tr>
+                              <td className="border border-white px-1 py-2">01</td>
+                              <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
+                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                                <a
+                                  href={`https://wa.me/+8801772517065`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                                >
+                                   <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
+                                </a>
+                                
+                              </td>
+                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                                <a
+                                  href={`https://wa.me/+8801772517065`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                                >
+                                    +880 1772-517065
+                                </a>
+                              </td>
+                              
+                            </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </> :
+                    <AgentListTable data={agents} onComplainClick={handleComplainClick}></AgentListTable>
+                }
                 {/* table */}
-                <AgentListTable data={agents} onComplainClick={handleComplainClick}></AgentListTable>
 
 
                 {/* next and previuse */}
@@ -268,7 +331,7 @@ const ListComponant = ({ image, text }) => {
                 </li>
                 <li className="border-b-1 border-dotted border-gray-600 pb-1 cursor-pointer hover:text-orange-600 hover:underline duration-200">
                   {" "}
-                  <Link to={"/howtoshare"}> WINPBU তে কিভাবে নেনদেন করবেন?</Link>
+                  <Link to={"/howtoshare"}> WIN-PBU তে কিভাবে নেনদেন করবেন?</Link>
                 </li>
               </ul>
 

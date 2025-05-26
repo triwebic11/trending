@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       { path: "/questionanswer", element: <QuestionAnswer /> },
       { path: "/loading", element: <Loading /> },
       { path: "/velki", element: <Velki /> },
-      { path: "/suchagent", element: <SuchAgent /> },
+      { path: "/suchagent", element: <SearchAgentByPhone /> },
       { path: "/searchagentbyphone", element: <SearchAgentByPhone /> },
       { path: "/howtobeagent", element: <HowToBeAgent /> },
       { path: "/velkisite", element: <VelkiSite /> },

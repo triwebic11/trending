@@ -84,7 +84,7 @@ const Home = () => {
                   <div>
                     <button
                       type="submit"
-                      className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded"
+                      className="bg-[#4caf50] hover:bg-green-700 text-white font-semibold px-7 py-2 rounded"
                     >
                       Submit
                     </button>
@@ -93,95 +93,80 @@ const Home = () => {
               </div>
             </div>
 
-            {
-              data?.map((row) => (
-                <div ref={complainRef} className="text-white p-4 text-base space-y-6">
-                  <h2 className="text-center text-xl font-bold hover:text-[#ff7c7c]  pb-2">লটারী! লটারী!! লটারী!!!!!...</h2>
-                  <h2 className="text-center text-xl hover:text-[#ff7c7c] font-bold pb-2">
-                    আপনি যদি ভেল্কির ইউজার হয়ে থাকেন তাহলে ফ্রীতে লটারী তে জয়েন করুন...
-                  </h2>
-                  <h2 className="text-center text-xl font-bold border-b pb-2">
-                    উনি ভেল্কির একজন অনলাইন {row?.type} Agent নাম্বার <span className="hover:text-[#ff7c7c]">{row?.agentNumber}</span>
-                  </h2>
+            {data?.map((row) => (
+                              <div ref={complainRef} className="text-white p-4 text-base space-y-6">
+                                <h1 className='hover:text-[#ff7c7c] text-xl text-center'><a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">লটারী! লটারী!! লটারী!!!!!...</a></h1>
+                                <h1 className='hover:text-[#ff7c7c] text-xl text-center'>
+                                  <a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">আপনি যদি ভেল্কির ইউজার হয়ে থাকেন তাহলে ফ্রীতে লটারী তে জয়েন করুন...</a>
+                                </h1>
+                                <h2 className="text-center text-xl font-bold border-b pb-2">
+                                  উনি ভেল্কির একজন অনলাইন সুপার এজেন্ট নাম্বার <span className="text-green-400">{row?.agentNumber}</span>
+                                </h2>
+            
+                                {/* Super Agent Info */}
+                                <div className=" rounded-md p-4">
+                                  <table className="table-auto font-semibold text-center w-full border-collapse border border-white text-left">
+                                    <thead>
+                                      <tr>
+                                        <th colSpan="2" className="border border-white p-2 font-bold text-center ">
+                                          উনি যে সব সাইটের সুপার এজেন্টঃ <span className="text-green-400">VELKI ✅</span>
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td className="border border-white p-2 font-bold"> উনি যে সব সাইটের মাষ্টার এজেন্টঃ</td>
+                                        <td className="border text-center border-white p-2">VELKI ✅<br />
+            ভেল্কি সাইটের লিংক গুলোঃ</td>
+                                      </tr>
+                                      <tr>
+                                        <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
+                                        <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]"><FaWhatsapp className='text-3xl text-green-500' /><p>{row?.agentNumber}</p></td>
+                                        
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+            
+                                {/* Upline Info */}
+                                <div className=" rounded-md p-4">
+                                  <p className=" text-center mb-2">
+                                    এই ভেল্কির অনলাইন সুপার এজেন্ট এর আপলাইনের তথ্যঃ <br />
+                                    উনার অনলাইন সুপার এজেন্ট এর বিরুদ্ধে অভিযোগ করতে হলে নিচের যে কোন নাম্বার এ হোয়াটসঅ্যাপ এ মেসেজ দিতে হবে
+                                  </p>
+            
+                                  <table className="table-auto w-full border-collapse border border-white text-left">
+                                    <tbody>
+                                    
+                                      <tr>
+                                        <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
+                                        <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
+                                          <FaWhatsapp />
+                                          <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
+                                            +60146411920 
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    
+                                      <tr>
+                                        <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
+                                        <td className="border border-white p-2 space-y-1">
+                                          <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
+                                            <FaWhatsapp />
+                                            <a href="https://wa.me/601116085213" target="_blank" rel="noopener noreferrer">
+                                              +60 11-1608 5213
+                                            </a>
+                                          </div>
+                                          
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            ))}
 
-                  {/* Super Agent Info */}
-                  <div className=" rounded-md p-4">
-                    <table className="table-auto w-full border-collapse border border-white text-left">
-                      <thead>
-                        <tr>
-                          <th colSpan="2" className="border border-white p-2 font-bold text-center ">
-                            উনি যে সব সাইটের এজেন্টঃ <span className="hover:text-red-300">{row?.sites} ✅</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার সুপার এজেন্ট আইডিঃ</td>
-                          <td className="border border-white p-2">{row?.uniqueId}</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                          <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                            <FaWhatsapp />
-                            <a href={`https://wa.me/${row?.agentNumber}`} target="_blank" rel="noopener noreferrer">
-                              {row?.agentNumber}
-                            </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* Upline Info */}
-                  <div className=" rounded-md p-4">
-
-
-                    <p className=" text-center mb-2">
-                      এই ভেল্কির অনলাইন সুপার এজেন্ট এর আপলাইনের তথ্যঃ <br />
-                      উনার অনলাইন সুপার এজেন্ট এর বিরুদ্ধে অভিযোগ করতে হলে নিচের যে কোন নাম্বার এ হোয়াটসঅ্যাপ এ মেসেজ দিতে হবে
-                    </p>
-
-                    <table className="table-auto w-full border-collapse border border-white text-left">
-                      <tbody>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর এডমিন আইডিঃ</td>
-                          <td className="border border-white p-2">g</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                          <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                            <FaWhatsapp />
-                            <a href="https://wa.me/1772517065" target="_blank" rel="noopener noreferrer">
-                              +880 1772-517065
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার এডমিন এর এডমিন আইডিঃ</td>
-                          <td className="border border-white p-2">Akash Malik</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                          <td className="border border-white p-2 space-y-1">
-                            <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
-                              <FaWhatsapp />
-                              <a href="https://wa.me/971562076946" target="_blank" rel="noopener noreferrer">
-                                +971 56 207 6946
-                              </a>
-                            </div>
-                            <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
-                              <FaWhatsapp />
-                              <a href="https://wa.me/855314271525" target="_blank" rel="noopener noreferrer">
-                                +855 31 427 1525
-                              </a>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>))
-            }
+     
 
 
             <div className=" text-lg ">

@@ -24,21 +24,7 @@ const CustomerServics = () => {
     <div>
       <ListComponant image={customer} text={"Customer service List"}></ListComponant>
 
-      <Container className=" text-white  px-6 pt-10 font-sans">
-        <div className=" flex flex-col md:flex-row gap-8 justify-between">
-          <div className="">
-            {/* Category Title */}
-
-            <div className="">
-              <div className="mb-2">
-              </div>
-              <div className="">
-              </div>
-            </div>
-          </div>
-          <div class="divide-y-3 divide-dashed divide-white"></div>
-        </div>
-      </Container>
+      
     </div>
   );
 };

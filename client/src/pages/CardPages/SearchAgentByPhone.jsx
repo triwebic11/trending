@@ -48,16 +48,20 @@ const SearchAgentByPhone = () => {
     };
     console.log('searchData', searchData);
     const encodedNumber = encodeURIComponent(searchData?.agentNumber); // "+601112206352" → "%2B601112206352"
+    const [notfound, setnotfound] = useState("")
+    console.log('Encoded Number:', notfound);
 
 
     const { data: agents = [], isLoading, refetch } = useQuery({
         queryKey: ['agents', searchData?.agentType, searchData?.agentId, searchText,encodedNumber],
         queryFn: async () => {
             const res = await axios.get(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&agentNumber=${encodedNumber || ''}&uniqueId=${searchData?.agentId || ''}`);
+            console.log('API Response:', res.data);
+            setnotfound(res.data.message === "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।");
             return res.data;
         },
     });
-    console.log('Agents data:', agents);
+    console.log('Agents data:', agents?.message);
     return (
         <div className="relative">
             <div className=" text-white  px-6 py-10 font-sans">
@@ -82,9 +86,10 @@ const SearchAgentByPhone = () => {
 
 
 
-                                {
-                                    <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
-                                }
+                                {/* {
+                                  !agents?.message === "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।" &&  <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
+                                } */}
+                                <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
                                 {
                                     isLoading ? (
                                         <div className="text-white"></div>
@@ -117,7 +122,7 @@ const SearchAgentByPhone = () => {
                                             </tbody>
                                         </table>
                                     ) : agents?.length === 0 ? (
-                                        <div className="text-white text-center mt-4">আপনার দেয়া নাম্বার টি এই মুহুর্তে এখন আর কেউ ব্যবহার করছে না। দয়া করে এই নাম্বার টি তে মেসেজ দেয়া থেকে বিরত থাকুন।</div>
+                                        <div className="text-white text-center text-3xl mt-4">আপনার দেয়া নাম্বার টি এই মুহুর্তে এখন আর কেউ ব্যবহার করছে না। দয়া করে এই নাম্বার টি তে মেসেজ দেয়া থেকে বিরত থাকুন।</div>
                                     ) : null
                                 }
 
