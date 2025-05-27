@@ -11,9 +11,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.email === adminEmail && form.password === adminPassword) {
-      alert(
-        "Login successful! You are now an admin. Click OK to go to the dashboard."
-      );
+      console.log("Navigate to dash board");
       navigate("/dashboard");
     } else {
       alert("Invalid email or password. Please try again.");
