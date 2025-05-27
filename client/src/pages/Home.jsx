@@ -19,8 +19,11 @@ const Home = () => {
   const [agentType, setAgentType] = useState('');
   const [agentId, setAgentId] = useState('');
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const response = await fetch(`https://api.win-pbu.com/api/agent?type=${agentType}&uniqueId=${agentId}`);
     const result = await response.json();
     setdata(result);
@@ -61,7 +64,7 @@ const Home = () => {
                       className="w-full px-3 py-2 bg-[#1e1e1e] border border-white rounded text-white"
                       required
                     >
-                      <option value="">-- এজেন্ট বাছাই করুন --</option>
+                      
                       <option value="Master">মাস্টার এজেন্ট</option>
                       <option value="Supper">সুপার এজেন্ট</option>
                       <option value="Sub_admin">সাব এডমিন</option>
@@ -84,7 +87,7 @@ const Home = () => {
                   <div>
                     <button
                       type="submit"
-                      className="bg-[#4caf50] hover:bg-green-700 text-white font-semibold px-7 py-2 rounded"
+                      className="bg-[#4caf50] hover:bg-green-700 text-white font-semibold px-7 py-3 rounded"
                     >
                       Submit
                     </button>

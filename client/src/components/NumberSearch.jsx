@@ -4,7 +4,9 @@ const NumberSearch = ({ onSearch }) => {
   const [agentNumber, setAgentNumber] = useState('');
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
+    
 
     onSearch({ agentNumber: agentNumber });
   };
@@ -16,11 +18,11 @@ const NumberSearch = ({ onSearch }) => {
       </h2>
       <form 
         onSubmit={handleSubmit} 
-        className="border border-white rounded-md p-6 w-full max-w-sm space-y-4"
+        className="border border-white rounded-md p-6 w-full max-w-sm space-y-2"
       >
 
         <div>
-          <label className="block mb-1">Phone Number:</label>
+          <label className="block mb-1 text-xl uppercase">Phone Number:</label>
           <input
             type="text"
             value={agentNumber}

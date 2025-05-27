@@ -190,7 +190,7 @@ const AgentManagement = () => {
                   </td>
                   <td className="border border-white px-4 py-2">
                     <a
-                      href={`https://wa.me/${row?.agentNumber}`}
+                      href={`https://wa.me/${row?.agentNumber.replace(/\D/g, '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#ff7c7c] duration-200 text-white underline"

@@ -56,9 +56,19 @@ const ChatWidget = () => {
       {open && (
         <div
           ref={mainBoxRef}
-          className="fixed bottom-[22%] right-[6%] h-[520px] md:h-3/4 w-[325px] md:w-[430px] bg-white rounded-xl shadow-xl p-4 text-black"
+          className="fixed top-0 md:top-10 md:bottom-[22%] right-[6%] h-screen bg-white rounded-xl shadow-xl p-4 text-black md:h-[520px]"
         >
           <div className="bg-yellow-600 text-white rounded-t-xl p-6 py-20 flex flex-col gap-2">
+            <button
+  onClick={() => {
+    setOpen(false);
+    setMessage(false);
+    setContact(false);
+  }}
+  className="absolute top-4 right-4 text-white p-2 rounded-full z-[101]"
+>
+  ✕
+</button>
             <div className="font-bold text-lg">হাই 👋</div>
             <div className="text-2xl">আমরা কিভাবে সাহায্য করতে পারি?</div>
           </div>

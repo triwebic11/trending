@@ -35,12 +35,12 @@ function SliderHeader() {
   return (
     <div className="flex flex-row justify-start items-center py-2">
       <div className=""></div>
-      <div className="relative w-[380px] mr-4 font-semibold md:px-2 md:w-1/2 bg-amber-400 text-base  text-center md:mr-8  py-2">
+      <div className="relative w-[380px] mr-4  font-semibold md:px-2 md:w-2/2 bg-amber-400 text-base  text-center md:mr-8  py-2">
         Breaking News
         <span className="absolute -top-[4.5px] -right-3 w-0 h-0 border-t-[30px] border-t-transparent border-l-[20px] border-l-amber-400 rotate-90"></span>
       </div>
 
-      <div className="slider-container text-white text-sm w-4/6 md:w-5/6  ">
+      <div className="slider-container text-white text-sm w-3/6 md:w-5/6  ">
         <Slider {...settings}>
           <div>
             <Link

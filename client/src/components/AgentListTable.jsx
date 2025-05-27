@@ -32,7 +32,7 @@ const AgentListTable = ({ data, onComplainClick }) => {
                     </td>
                     <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
                       <a
-                        href={`https://wa.me/${row?.agentNumber?.replace(/\+/g, '')}`}
+                        href={`https://wa.me/${row?.agentNumber?.replace(/\D/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"

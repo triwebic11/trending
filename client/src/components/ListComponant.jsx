@@ -62,6 +62,7 @@ const ListComponant = ({ image, text }) => {
       return res.data;
     },
   });
+  const searchResults = agents?.filter(item => item.agentNumber === searchText)
 
   // console.log('agentssssss', agents);
   return (
@@ -72,6 +73,14 @@ const ListComponant = ({ image, text }) => {
 
             <div className="">
               <div className="mb-20">
+                {
+                                    searchText?.length > 0 && (
+                                        <div className='text-4xl font-semibold pb-10
+                                '>
+                                    Search Results for: {searchText}
+                                </div>
+                                    )
+                                }
                 {/* Image */}
                 <div className="mb-6">
 
@@ -211,7 +220,7 @@ const ListComponant = ({ image, text }) => {
                         <tbody>
                           
                             <tr>
-                              <td className="border border-white px-1 py-2">02</td>
+                              <td className="border border-white px-1 py-2">01</td>
                               <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
                               <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
                                 <a
@@ -236,7 +245,7 @@ const ListComponant = ({ image, text }) => {
                               </td>
                               
                             </tr>
-                            <tr>
+                            {/* <tr>
                               <td className="border border-white px-1 py-2">01</td>
                               <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
                               <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
@@ -261,13 +270,21 @@ const ListComponant = ({ image, text }) => {
                                 </a>
                               </td>
                               
-                            </tr>
+                            </tr> */}
                           
                         </tbody>
                       </table>
                     </div>
-                  </> :
-                    <AgentListTable data={agents} onComplainClick={handleComplainClick}></AgentListTable>
+                  </> :(
+
+                    searchResults.length > 0 ? (
+                    <AgentListTable data={searchResults} onComplainClick={handleComplainClick}></AgentListTable> 
+
+                    ): 
+                    <AgentListTable data={agents} onComplainClick={handleComplainClick} />
+
+                   
+                  )
                 }
                 {/* table */}
 
@@ -296,7 +313,7 @@ const ListComponant = ({ image, text }) => {
               <div className="flex border border-gray-500 mb-16">
                 <input
                   type="text"
-                  value={searchData.agentNumber}
+                  // value={searchData.agentNumber}
                   onChange={(e) => setSearchText(e.target.value)}
                   className="flex-grow px-3 py-4 bg-transparent text-white focus:outline-none"
                 />

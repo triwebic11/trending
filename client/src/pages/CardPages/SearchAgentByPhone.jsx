@@ -55,12 +55,19 @@ const SearchAgentByPhone = () => {
     const { data: agents = [], isLoading, refetch } = useQuery({
         queryKey: ['agents', searchData?.agentType, searchData?.agentId, searchText,encodedNumber],
         queryFn: async () => {
-            const res = await axios.get(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&agentNumber=${encodedNumber || ''}&uniqueId=${searchData?.agentId || ''}`);
+            const res = await axios.get(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&uniqueId=${searchData?.agentId || ''}`);
             console.log('API Response:', res.data);
             setnotfound(res.data.message === "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।");
             return res.data;
         },
     });
+
+    const results = agents?.filter(item =>
+  item.agentNumber.replace(/\D/g, '').includes(item.agentNumber.replace(/\D/g, ''))
+);
+const filteredResults = agents?.filter(item => item.agentNumber === searchData?.agentNumber)
+const searchResults = agents?.filter(item => item.agentNumber === searchText)
+console.log('Filtered Results:', filteredResults);
     console.log('Agents data:', agents?.message);
     return (
         <div className="relative">
@@ -70,6 +77,14 @@ const SearchAgentByPhone = () => {
 
                         <div className="">
                             <div className="mb-20">
+                                {
+                                    searchText?.length > 0 && (
+                                        <div className='text-4xl font-semibold pb-10
+                                '>
+                                    Search Results for: {searchText}
+                                </div>
+                                    )
+                                }
                                 {/* Image */}
                                 <div className="mb-6">
                                     <img src={image} alt="image" className='w-full min-h-52' />
@@ -89,12 +104,18 @@ const SearchAgentByPhone = () => {
                                 {/* {
                                   !agents?.message === "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।" &&  <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
                                 } */}
-                                <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
+                                {
+
+                                searchData?.agentNumber || <NumberSearch onSearch={handleAgentSearch}></NumberSearch>
+                                }
                                 {
                                     isLoading ? (
                                         <div className="text-white"></div>
-                                    ) : agents?.length === 1 ? (
-                                        <table className="w-full border-collapse border font-bold border-white text-white text-center my-4">
+                                    ) : searchData?.agentNumber && filteredResults?.length === 0 ? (
+                                        <div className="text-white text-center text-3xl mt-4">আপনার দেয়া নাম্বার টি এই মুহুর্তে এখন আর কেউ ব্যবহার করছে না। দয়া করে এই নাম্বার টি তে মেসেজ দেয়া থেকে বিরত থাকুন।</div>
+                                       
+                                    ) :  (
+                                         searchData?.agentNumber &&<table className="w-full border-collapse border font-bold border-white text-white text-center my-4">
                                             <thead>
                                                 <tr>
                                                     <th className="border border-white px-4 py-2">ID NO</th>
@@ -105,27 +126,64 @@ const SearchAgentByPhone = () => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td className="border border-white px-4 py-2">{agents[0]?.uniqueId}</td>
-                                                    <td className="border border-white px-4 py-2">{agents[0]?.type}</td>
-                                                    <td className="border border-white px-4 py-2">|| {agents[0]?.sites}✅</td>
+                                                    <td className="border border-white px-4 py-2">{filteredResults[0]?.uniqueId}</td>
+                                                    <td className="border border-white px-4 py-2">{filteredResults[0]?.type}</td>
+                                                    <td className="border border-white px-4 py-2">|| {filteredResults[0]?.sites}✅</td>
                                                     <td className="border border-white px-4 py-2">
                                                         <a
-                                                            href={`https://wa.me/${agents[0]?.agentNumber}`}
+                                                            href={`https://wa.me/${filteredResults[0]?.agentNumber?.replace(/\D/g, '')}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="hover:text-[#ff7c7c] duration-200 text-white underline"
                                                         >
-                                                            {agents[0]?.agentNumber}
+                                                            {filteredResults[0]?.agentNumber}
                                                         </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    ) : agents?.length === 0 ? (
+                                        
+                                    ) 
+                                }
+                                {
+                                    isLoading ? (
+                                        <div className="text-white"></div>
+                                    ) : searchText?.length > 0 && searchResults?.length === 0 ? (
                                         <div className="text-white text-center text-3xl mt-4">আপনার দেয়া নাম্বার টি এই মুহুর্তে এখন আর কেউ ব্যবহার করছে না। দয়া করে এই নাম্বার টি তে মেসেজ দেয়া থেকে বিরত থাকুন।</div>
-                                    ) : null
+                                       
+                                    ) :  (
+                                         searchText?.length > 0 &&<table className="w-full border-collapse border font-bold border-white text-white text-center my-4">
+                                            <thead>
+                                                <tr>
+                                                    <th className="border border-white px-4 py-2">ID NO</th>
+                                                    <th className="border border-white px-4 py-2">TYPE</th>
+                                                    <th className="border border-white px-4 py-2">SITE</th>
+                                                    <th className="border border-white px-4 py-2">PHONE NUMBER</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td className="border border-white px-4 py-2">{searchResults[0]?.uniqueId}</td>
+                                                    <td className="border border-white px-4 py-2">{searchResults[0]?.type}</td>
+                                                    <td className="border border-white px-4 py-2">|| {searchResults[0]?.sites}✅</td>
+                                                    <td className="border border-white px-4 py-2">
+                                                        <a
+                                                            href={`https://wa.me/${searchResults[0]?.agentNumber?.replace(/\D/g, '')}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="hover:text-[#ff7c7c] duration-200 text-white underline"
+                                                        >
+                                                            {searchResults[0]?.agentNumber}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    ) 
                                 }
 
+                               
 
 
 
@@ -145,16 +203,16 @@ const SearchAgentByPhone = () => {
                     </div>
                     <div className="border-l border-dotted"></div>
 
-                    <div className="sticky top-20 h-fit self-start md:w-[25%] ">
+                    <div className="sticky top-20 w-full h-fit self-start md:w-[30%] ">
                         {/* Sidebar */}
 
-                        <aside className=' w-[135%] md:w-full'>
+                        <aside className=' w-[100%] md:w-full'>
                             <div className='border p-4 rounded-lg mb-16'>
                                 <h3 className="text-lg font-semibold mb-2">Search</h3>
                             <div className="flex border  border-gray-500">
                                 <input
                                     type="text"
-                                    value={searchData.agentNumber}
+                                    // value={searchData.agentNumber}
                                     onChange={(e) => setSearchText(e.target.value)}
                                     className=" w-full px-3 py-4 bg-transparent text-white focus:outline-none"
                                 />

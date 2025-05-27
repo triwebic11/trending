@@ -46,18 +46,30 @@ router.post("/agent", async (req, res) => {
 
 // GET - Fetch all agents
 // GET /api/agent/search?type=value&agentNumber=value&phone=value
+
+// Remove all non-digits from phone numbers
+const normalizeNumber = (number) => number?.replace(/\D/g, '');
+
 router.get("/agent", async (req, res) => {
   try {
     const { type, agentNumber, uniqueId } = req.query;
 
-    // Dynamic query object
     const query = {};
-
     if (type) query.type = type;
-    if (agentNumber) query.agentNumber = agentNumber;
     if (uniqueId) query.uniqueId = uniqueId;
 
-    const agents = await Agent.find(query).sort({ createdAt: -1 });
+    // Step 1: Basic query first (without filtering by agentNumber)
+    let agents = await Agent.find(query).sort({ createdAt: -1 });
+
+    // Step 2: Filter with normalized agentNumber (if provided)
+    if (agentNumber) {
+      const normalizedSearch = normalizeNumber(agentNumber);
+      console.log("Normalized Search:", normalizedSearch);
+
+      agents = agents.filter(agent =>
+        normalizeNumber(agent.agentNumber).includes(normalizedSearch)
+      );
+    }
 
     if (agents.length === 0) {
       return res.status(404).json({ message: "কোনো এজেন্ট খুঁজে পাওয়া যায়নি।" });
