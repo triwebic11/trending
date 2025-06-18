@@ -155,7 +155,7 @@ const ListComponant = ({ image, text }) => {
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                              <FaWhatsapp />
+                                <FaWhatsapp className="text-green-500 text-2xl" />
                               <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
                                 +60146411920 
                               </a>
@@ -166,7 +166,7 @@ const ListComponant = ({ image, text }) => {
                             <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 space-y-1">
                               <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
-                                <FaWhatsapp />
+                                   <FaWhatsapp className="text-green-500 text-2xl" />
                                 <a href="https://wa.me/601116085213" target="_blank" rel="noopener noreferrer">
                                   +60 11-1608 5213
                                 </a>
@@ -233,6 +233,7 @@ const ListComponant = ({ image, text }) => {
                                 </a>
                                 
                               </td>
+                              
                               <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
                                 <a
                                   href={`https://wa.me/+971562076946`}
