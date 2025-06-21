@@ -74,13 +74,13 @@ const ListComponant = ({ image, text }) => {
             <div className="">
               <div className="mb-20">
                 {
-                                    searchText?.length > 0 && (
-                                        <div className='text-4xl font-semibold pb-10
+                  searchText?.length > 0 && (
+                    <div className='text-4xl font-semibold pb-10
                                 '>
-                                    Search Results for: {searchText}
-                                </div>
-                                    )
-                                }
+                      Search Results for: {searchText}
+                    </div>
+                  )
+                }
                 {/* Image */}
                 <div className="mb-6">
 
@@ -131,12 +131,12 @@ const ListComponant = ({ image, text }) => {
                           <tr>
                             <td className="border border-white p-2 font-bold"> উনি যে সব সাইটের মাষ্টার এজেন্টঃ</td>
                             <td className="border text-center border-white p-2">VELKI ✅<br />
-ভেল্কি সাইটের লিংক গুলোঃ</td>
+                              ভেল্কি সাইটের লিংক গুলোঃ</td>
                           </tr>
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]"><FaWhatsapp className='text-3xl text-green-500' /><p>{complainAgentNumber}</p></td>
-                            
+                            <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]"><FaWhatsapp className='text-3xl text-green-500' /><p>{row?.agentNumber}</p></td>
+
                           </tr>
                         </tbody>
                       </table>
@@ -151,17 +151,17 @@ const ListComponant = ({ image, text }) => {
 
                       <table className="table-auto w-full border-collapse border border-white text-left">
                         <tbody>
-                        
+
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
                               <FaWhatsapp />
                               <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
-                                +60146411920 
+                                +60146411920
                               </a>
                             </td>
                           </tr>
-                        
+
                           <tr>
                             <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
                             <td className="border border-white p-2 space-y-1">
@@ -171,7 +171,7 @@ const ListComponant = ({ image, text }) => {
                                   +60 11-1608 5213
                                 </a>
                               </div>
-                              
+
                             </td>
                           </tr>
                         </tbody>
@@ -214,38 +214,38 @@ const ListComponant = ({ image, text }) => {
                             <th className="border border-white px-1 py-2 whitespace-nowrap">TYPE</th>
                             <th className="border border-white px-1 py-2 whitespace-pre-wrap">WHTS</th>
                             <th className="border border-white px-1 py-2 whitespace-pre-wrap">PHONE NUMBER</th>
-                            
+
                           </tr>
                         </thead>
                         <tbody>
-                          
-                            <tr>
-                              <td className="border border-white px-1 py-2">01</td>
-                              <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
-                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
-                                <a
-                                  href={`https://wa.me/+971562076946`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
-                                >
-                                   <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
-                                </a>
-                                
-                              </td>
-                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
-                                <a
-                                  href={`https://wa.me/+971562076946`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
-                                >
-                                   +971 56 207 6946
-                                </a>
-                              </td>
-                              
-                            </tr>
-                            {/* <tr>
+
+                          <tr>
+                            <td className="border border-white px-1 py-2">01</td>
+                            <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
+                            <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                              <a
+                                href={`https://wa.me/+971562076946`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                              >
+                                <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
+                              </a>
+
+                            </td>
+                            <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                              <a
+                                href={`https://wa.me/+971562076946`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                              >
+                                +971 56 207 6946
+                              </a>
+                            </td>
+
+                          </tr>
+                          {/* <tr>
                               <td className="border border-white px-1 py-2">01</td>
                               <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
                               <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
@@ -271,19 +271,19 @@ const ListComponant = ({ image, text }) => {
                               </td>
                               
                             </tr> */}
-                          
+
                         </tbody>
                       </table>
                     </div>
-                  </> :(
+                  </> : (
 
                     searchResults.length > 0 ? (
-                    <AgentListTable data={searchResults} onComplainClick={handleComplainClick}></AgentListTable> 
+                      <AgentListTable data={searchResults} onComplainClick={handleComplainClick}></AgentListTable>
 
-                    ): 
-                    <AgentListTable data={agents} onComplainClick={handleComplainClick} />
+                    ) :
+                      <AgentListTable data={agents} onComplainClick={handleComplainClick} />
 
-                   
+
                   )
                 }
                 {/* table */}
