@@ -4,7 +4,7 @@ import io from "socket.io-client";
 
 const API_URL =
   window.location.hostname === "localhost"
-    ? "http://localhost:5000"
+    ? "https://api.win-pbu.com"
     : "https://api.win-pbu.com";
 
 const socket = io(API_URL, {

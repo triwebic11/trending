@@ -6,7 +6,7 @@ import { MdEmojiEmotions, MdOutlineAttachFile, MdGif } from "react-icons/md";
 // ✅ API URL
 const API_URL =
   window.location.hostname === "localhost"
-    ? "http://localhost:5000"
+    ? "https://api.win-pbu.com"
     : "https://api.win-pbu.com";
 
 // ✅ Socket init

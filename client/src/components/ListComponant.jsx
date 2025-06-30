@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ImageBoxDesigner from './ImageBoxDesigner';
 import HomeCardSections from './HomeCardSections';
 import AgentSearchForm from './AgentSearchForm';
@@ -22,9 +22,7 @@ const ListComponant = ({ image, text }) => {
 
   const handleComplainClick = (agentNumber) => {
     setComplainAgentNumber(agentNumber);
-    setTimeout(() => {
-      complainRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+
   };
 
   // Determine agentType based on route
@@ -47,22 +45,42 @@ const ListComponant = ({ image, text }) => {
   };
 
   const handleAgentSearch = (data) => {
+    setComplainAgentNumber(null);
     console.log('Received from form:', data);
     setSearchData({
       ...data,
       agentType: agentTypeFromPath, // ensure route type is always applied
     });
-  };
-  console.log('searchData', searchData);
 
-  const { data: agents = [], isLoading, refetch } = useQuery({
+  };
+  useEffect(() => {
+    if ((complainAgentNumber || searchData?.agentId) && complainRef.current) {
+      setTimeout(() => {
+        complainRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 200); // slight delay so DOM has time to update
+    }
+  }, [complainAgentNumber, searchData?.agentId]);
+
+
+
+  const { data: agents = [] } = useQuery({
     queryKey: ['agents', searchData?.agentType, searchData?.agentId, searchText],
     queryFn: async () => {
       const res = await axios.get(`https://api.win-pbu.com/api/agent?type=${searchData?.agentType || ''}&agentNumber=${searchData.agentNumber || ''}&uniqueId=${searchData?.agentId || ''}`);
       return res.data;
     },
   });
+
+  console.log('agents', agents);
   const searchResults = agents?.filter(item => item.agentNumber === searchText)
+
+  const numberis = complainAgentNumber || searchData?.agentId;
+
+
+
+
+  console.log('searchResults', searchResults);
+  console.log('searchData', searchData);
 
   // console.log('agentssssss', agents);
   return (
@@ -109,12 +127,34 @@ const ListComponant = ({ image, text }) => {
                   January 26, 2025
                 </p>
 
-                {complainAgentNumber && (
-                  <div ref={complainRef} className="text-white p-4 space-y-6">
-                    <h1 className='hover:text-[#ff7c7c] text-xl text-center'><a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">লটারী! লটারী!! লটারী!!!!!...</a></h1>
-                    <h1 className='hover:text-[#ff7c7c] text-xl text-center'><a href="https://www.facebook.com/profile.php?id=61572260171810" target="_blank">আপনি যদি ভেল্কির ইউজার হয়ে থাকেন তাহলে ফ্রীতে লটারী তে জয়েন করুন...</a></h1>
+
+                {numberis && agents?.map((row, index) => (
+                  <div
+                    ref={index === 0 ? complainRef : null}
+                    // ref={complainRef}
+                    key={index}
+                    className="text-white p-4 text-base space-y-6"
+                  >
+                    <h1 className="hover:text-[#ff7c7c] text-xl text-center">
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61572260171810"
+                        target="_blank"
+                      >
+                        লটারী! লটারী!! লটারী!!!!!...
+                      </a>
+                    </h1>
+                    <h1 className="hover:text-[#ff7c7c] text-xl text-center">
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61572260171810"
+                        target="_blank"
+                      >
+                        আপনি যদি ভেল্কির ইউজার হয়ে থাকেন তাহলে ফ্রীতে লটারী তে জয়েন
+                        করুন...
+                      </a>
+                    </h1>
                     <h2 className="text-center text-xl font-bold border-b pb-2">
-                      উনি ভেল্কির একজন অনলাইন সুপার এজেন্ট নাম্বার <span className="text-green-400">{complainAgentNumber}</span>
+                      উনি ভেল্কির একজন অনলাইন সুপার এজেন্ট নাম্বার{" "}
+                      <span className="text-green-400">{complainAgentNumber || row?.agentNumber}</span>
                     </h2>
 
                     {/* Super Agent Info */}
@@ -122,21 +162,34 @@ const ListComponant = ({ image, text }) => {
                       <table className="table-auto font-semibold text-center w-full border-collapse border border-white text-left">
                         <thead>
                           <tr>
-                            <th colSpan="2" className="border border-white p-2 font-bold text-center ">
-                              উনি যে সব সাইটের সুপার এজেন্টঃ <span className="text-green-400">VELKI ✅</span>
+                            <th
+                              colSpan="2"
+                              className="border border-white p-2 font-bold text-center "
+                            >
+                              উনি যে সব সাইটের সুপার এজেন্টঃ{" "}
+                              <span className="text-green-400">VELKI ✅</span>
                             </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-white p-2 font-bold"> উনি যে সব সাইটের মাষ্টার এজেন্টঃ</td>
-                            <td className="border text-center border-white p-2">VELKI ✅<br />
-                              ভেল্কি সাইটের লিংক গুলোঃ</td>
+                            <td className="border border-white p-2 font-bold">
+                              {" "}
+                              উনি যে সব সাইটের মাষ্টার এজেন্টঃ
+                            </td>
+                            <td className="border text-center border-white p-2">
+                              VELKI ✅<br />
+                              ভেল্কি সাইটের লিংক গুলোঃ
+                            </td>
                           </tr>
                           <tr>
-                            <td className="border border-white p-2 font-bold">উনার হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]"><FaWhatsapp className='text-3xl text-green-500' /><p>{row?.agentNumber}</p></td>
-
+                            <td className="border border-white p-2 font-bold">
+                              উনার হোয়াটসঅ্যাপ নাম্বারঃ
+                            </td>
+                            <td className="border flex flex-col justify-center items-center border-white p-2 text-center hover:text-[#ff7c7c]">
+                              <FaWhatsapp className="text-3xl text-green-500" />
+                              <p>{complainAgentNumber || row?.agentNumber}</p>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -146,57 +199,74 @@ const ListComponant = ({ image, text }) => {
                     <div className=" rounded-md p-4">
                       <p className=" text-center mb-2">
                         এই ভেল্কির অনলাইন সুপার এজেন্ট এর আপলাইনের তথ্যঃ <br />
-                        উনার অনলাইন সুপার এজেন্ট এর বিরুদ্ধে অভিযোগ করতে হলে নিচের যে কোন নাম্বার এ হোয়াটসঅ্যাপ এ মেসেজ দিতে হবে
+                        উনার অনলাইন সুপার এজেন্ট এর বিরুদ্ধে অভিযোগ করতে হলে নিচের
+                        যে কোন নাম্বার এ হোয়াটসঅ্যাপ এ মেসেজ দিতে হবে
                       </p>
 
                       <table className="table-auto w-full border-collapse border border-white text-left">
                         <tbody>
-
                           <tr>
-                            <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
+                            <td className="border border-white p-2 font-bold">
+                              উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ
+                            </td>
                             <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                                <FaWhatsapp className="text-green-500 text-2xl" />
-                              <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
-                                +60146411920 
+                              <FaWhatsapp className="text-green-500 text-2xl" />
+                              <a
+                                href="https://wa.me/60167645072"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                +60 16-764 5072
+                              </a>
+                            </td>
+                            <td className="border-b border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
+                              <FaWhatsapp className="text-green-500 text-2xl" />
+                              <a
+                                href="https://wa.me/855314271525"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                +855 31 427 1525
                               </a>
                             </td>
                           </tr>
-                             <tr>
-                            <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                                <FaWhatsapp className="text-green-500 text-2xl" />
-                              <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
-                                +60 11-1608 5213
-                              </a>
+                          <tr>
+                            <td className="border border-white p-2 font-bold">
+                              উনার এডমিন এর এডমিন আইডিঃ
                             </td>
-                          </tr>
-                             <tr>
-                            <td className="border border-white p-2 font-bold">উনার সাব এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
-                            <td className="border border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
-                                <FaWhatsapp className="text-green-500 text-2xl" />
-                              <a href="https://wa.me/60146411920" target="_blank" rel="noopener noreferrer">
+                            <td className="border-b border-white p-2 hover:text-[#ff7c7c] flex items-center gap-2">
+                              <FaWhatsapp className="text-green-500 text-2xl" />
+                              <a
+                                href="https://wa.me/60146411920"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
                                 +60146411920
                               </a>
                             </td>
                           </tr>
-
                           <tr>
-                            <td className="border border-white p-2 font-bold">উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ</td>
+                            <td className="border border-white p-2 font-bold">
+                              উনার এডমিন এর হোয়াটসঅ্যাপ নাম্বারঃ
+                            </td>
                             <td className="border border-white p-2 space-y-1">
                               <div className="flex items-center gap-2 hover:text-[#ff7c7c]">
-                                   <FaWhatsapp className="text-green-500 text-2xl" />
-                                <a href="https://wa.me/601116085213" target="_blank" rel="noopener noreferrer">
+                                <FaWhatsapp className="text-green-500 text-2xl" />
+                                <a
+                                  href="https://wa.me/601116085213"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
                                   +60 11-1608 5213
                                 </a>
                               </div>
-
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                )}
+                ))}
 
                 <div>
                   <h4 className="text-bold mt-3 flex gap-2 font-semibold"> <span className="border-l border-4 border-white"></span>
@@ -236,34 +306,34 @@ const ListComponant = ({ image, text }) => {
                           </tr>
                         </thead>
                         <tbody>
-                          
-                            <tr>
-                              <td className="border border-white px-1 py-2">01</td>
-                              <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
-                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
-                                <a
-                                  href={`https://wa.me/+971562076946`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
-                                >
-                                   <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
-                                </a>
-                                
-                              </td>
-                              <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
-                                <a
-                                  href={`https://wa.me/+971562076946`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
-                                >
-                                   +971 56 207 6946
-                                </a>
-                              </td>
-                              
-                            </tr>
-                            {/* <tr>
+
+                          <tr>
+                            <td className="border border-white px-1 py-2">01</td>
+                            <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
+                            <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                              <a
+                                href={`https://wa.me/+971562076946`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                              >
+                                <FaWhatsapp className='text-green-500 text-3xl m-auto'></FaWhatsapp>
+                              </a>
+
+                            </td>
+                            <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
+                              <a
+                                href={`https://wa.me/+971562076946`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#ff7c7c] duration-200 text-white underline break-all"
+                              >
+                                +971 56 207 6946
+                              </a>
+                            </td>
+
+                          </tr>
+                          {/* <tr>
                               <td className="border border-white px-1 py-2">01</td>
                               <td className="border border-white px-1 py-2">কাস্টমার সার্ভিস</td>
                               <td className="border border-white px-1 py-2 whitespace-pre-wrap break-words">
