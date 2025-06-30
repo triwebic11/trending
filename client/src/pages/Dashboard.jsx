@@ -10,15 +10,15 @@ import { IoCloseSharp } from "react-icons/io5";
 import AdminChat from "./DashboardPages/AdminChat";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [openAgent, setOpenAgent] = useState(true);
   const [show, setShow] = useState(false);
   const [adminMessage, setAdminMessage] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) navigate("/");
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) navigate("/");
+  // }, [navigate]);
 
   return (
     <div className="bg-white">

@@ -10,31 +10,31 @@ import { FaWhatsapp } from "react-icons/fa";
 const Home = () => {
   const [complainAgentNumber, setComplainAgentNumber] = useState(null);
   const complainRef = useRef();
-  console.log('complainRef', complainAgentNumber);
+  console.log("complainRef", complainAgentNumber);
 
-  const [searchData, setSearchData] = useState({ agentType: '' });
-  console.log('searchData', searchData);
-  const [data, setdata] = useState([])
+  const [searchData, setSearchData] = useState({ agentType: "" });
+  console.log("searchData", searchData);
+  const [data, setdata] = useState([]);
+  console.log("data", data);
 
-  const [agentType, setAgentType] = useState('');
-  const [agentId, setAgentId] = useState('');
-
-
+  const [agentType, setAgentType] = useState("");
+  const [agentId, setAgentId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`https://api.win-pbu.com/api/agent?type=${agentType}&uniqueId=${agentId}`);
+    const response = await fetch(
+      `https://api.win-pbu.com/api/agent?type=${agentType}&uniqueId=${agentId}`
+    );
     const result = await response.json();
     setdata(result);
-    console.log('result*************', result);
+    console.log("result*************", result);
   };
-
 
   const handleComplainClick = (agentNumber) => {
     setComplainAgentNumber(agentNumber);
     setTimeout(() => {
-      complainRef.current?.scrollIntoView({ behavior: 'smooth' });
+      complainRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
 
@@ -45,9 +45,11 @@ const Home = () => {
           <SecondSlid />
           <div className="text-left my-5">
             <div>
-              <h1 className="md:text-6xl text-4xl font-bold">WINPBU তে স্বাগতম</h1>
+              <h1 className="md:text-6xl text-4xl font-bold">
+                WINPBU তে স্বাগতম
+              </h1>
             </div>
-            <div className="text-base font-semibold my-4" >
+            <div className="text-base font-semibold my-4">
               <div className="flex flex-col items-center justify-center text-white px-4 py-10">
                 <h2 className="text-center text-lg font-semibold mb-2">
                   এজেন্ট এর আইডি নাম্বার দিয়ে খুঁজুন:
